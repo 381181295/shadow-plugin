@@ -1,0 +1,37 @@
+{
+  "name": "shadow-plugin",
+  "version": "0.0.0-development",
+  "description": "TailwindCSS plugin for adding nice looking shadows.",
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/index.css -o ./dist/shadow-plugin.css -m",
+    "format": "prettier --write --ignore-unknown .",
+    "demo": "open demo/index.html"
+  },
+  "exports": "./dist/shadow-plugin.css",
+  "main": "./dist/shadow-plugin.css",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "shadow",
+    "tailwind shadow",
+    "css shadow",
+    "smooth shadow",
+    "pure css shadow",
+    "tailwind pure css plugin",
+    "tailwindcss"
+  ],
+  "repository": "flornkm/shadow-plugin",
+  "author": {
+    "name": "flornkm",
+    "website": "https://floriankiem.com"
+  },
+  "license": "MIT",
+  "prettier": {
+    "printWidth": 100
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "tailwindcss": "^4.1.13"
+  }
+}
