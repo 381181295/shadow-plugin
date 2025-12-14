@@ -1,0 +1,170 @@
+/**
+ * TailwindCSS smooth shadow effect plugin.
+ *
+ * @author Florian Kiem <https://github.com/flornkm>
+ * @license MIT
+ */
+
+@theme {
+  --smooth-shadow-scale-xs: 0.1;
+  --smooth-shadow-scale-sm: 0.2;
+  --smooth-shadow-scale-md: 0.6;
+  --smooth-shadow-scale-lg: 1.2;
+  --smooth-shadow-scale-xl: 1.6;
+  --smooth-shadow-scale-2xl: 2;
+}
+
+@utility smooth-shadow {
+  --smooth-shadow-scale: var(--smooth-shadow-scale-md);
+  --smooth-shadow-color: var(--tw-shadow-color, currentColor);
+
+  box-shadow: 0 calc(5px * var(--smooth-shadow-scale)) calc(7px * var(--smooth-shadow-scale))
+      calc(-1px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 12%, transparent),
+    0 calc(20px * var(--smooth-shadow-scale)) calc(13px * var(--smooth-shadow-scale))
+      calc(-2px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 7%, transparent),
+    0 calc(44px * var(--smooth-shadow-scale)) calc(19px * var(--smooth-shadow-scale))
+      calc(-3px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 4%, transparent),
+    0 calc(79px * var(--smooth-shadow-scale)) calc(24px * var(--smooth-shadow-scale))
+      calc(-4px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 2.5%, transparent),
+    0 calc(123px * var(--smooth-shadow-scale)) calc(28px * var(--smooth-shadow-scale))
+      calc(-5px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 1.2%, transparent) !important;
+}
+
+@utility smooth-shadow-xs {
+  --smooth-shadow-color: var(--tw-shadow-color, currentColor);
+  --smooth-shadow-scale: var(--smooth-shadow-scale-xs);
+  box-shadow: 0 calc(5px * var(--smooth-shadow-scale)) calc(7px * var(--smooth-shadow-scale))
+      calc(-1px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 12%, transparent),
+    0 calc(20px * var(--smooth-shadow-scale)) calc(13px * var(--smooth-shadow-scale))
+      calc(-2px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 7%, transparent),
+    0 calc(44px * var(--smooth-shadow-scale)) calc(19px * var(--smooth-shadow-scale))
+      calc(-3px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 4%, transparent),
+    0 calc(79px * var(--smooth-shadow-scale)) calc(24px * var(--smooth-shadow-scale))
+      calc(-4px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 2.5%, transparent),
+    0 calc(123px * var(--smooth-shadow-scale)) calc(28px * var(--smooth-shadow-scale))
+      calc(-5px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 1.2%, transparent) !important;
+}
+
+@utility smooth-shadow-sm {
+  --smooth-shadow-color: var(--tw-shadow-color, currentColor);
+  --smooth-shadow-scale: var(--smooth-shadow-scale-sm);
+  box-shadow: 0 calc(5px * var(--smooth-shadow-scale)) calc(7px * var(--smooth-shadow-scale))
+      calc(-1px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 12%, transparent),
+    0 calc(20px * var(--smooth-shadow-scale)) calc(13px * var(--smooth-shadow-scale))
+      calc(-2px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 7%, transparent),
+    0 calc(44px * var(--smooth-shadow-scale)) calc(19px * var(--smooth-shadow-scale))
+      calc(-3px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 4%, transparent),
+    0 calc(79px * var(--smooth-shadow-scale)) calc(24px * var(--smooth-shadow-scale))
+      calc(-4px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 2.5%, transparent),
+    0 calc(123px * var(--smooth-shadow-scale)) calc(28px * var(--smooth-shadow-scale))
+      calc(-5px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 1.2%, transparent) !important;
+}
+
+@utility smooth-shadow-md {
+  --smooth-shadow-color: var(--tw-shadow-color, currentColor);
+  --smooth-shadow-scale: var(--smooth-shadow-scale-md);
+  box-shadow: 0 calc(5px * var(--smooth-shadow-scale)) calc(7px * var(--smooth-shadow-scale))
+      calc(-1px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 12%, transparent),
+    0 calc(20px * var(--smooth-shadow-scale)) calc(13px * var(--smooth-shadow-scale))
+      calc(-2px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 7%, transparent),
+    0 calc(44px * var(--smooth-shadow-scale)) calc(19px * var(--smooth-shadow-scale))
+      calc(-3px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 4%, transparent),
+    0 calc(79px * var(--smooth-shadow-scale)) calc(24px * var(--smooth-shadow-scale))
+      calc(-4px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 2.5%, transparent),
+    0 calc(123px * var(--smooth-shadow-scale)) calc(28px * var(--smooth-shadow-scale))
+      calc(-5px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 1.2%, transparent) !important;
+}
+
+@utility smooth-shadow-lg {
+  --smooth-shadow-color: var(--tw-shadow-color, currentColor);
+  --smooth-shadow-scale: var(--smooth-shadow-scale-lg);
+  box-shadow: 0 calc(5px * var(--smooth-shadow-scale)) calc(7px * var(--smooth-shadow-scale))
+      calc(-1px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 12%, transparent),
+    0 calc(20px * var(--smooth-shadow-scale)) calc(13px * var(--smooth-shadow-scale))
+      calc(-2px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 7%, transparent),
+    0 calc(44px * var(--smooth-shadow-scale)) calc(19px * var(--smooth-shadow-scale))
+      calc(-3px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 4%, transparent),
+    0 calc(79px * var(--smooth-shadow-scale)) calc(24px * var(--smooth-shadow-scale))
+      calc(-4px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 2.5%, transparent),
+    0 calc(123px * var(--smooth-shadow-scale)) calc(28px * var(--smooth-shadow-scale))
+      calc(-5px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 1.2%, transparent) !important;
+}
+
+@utility smooth-shadow-xl {
+  --smooth-shadow-color: var(--tw-shadow-color, currentColor);
+  --smooth-shadow-scale: var(--smooth-shadow-scale-xl);
+  box-shadow: 0 calc(5px * var(--smooth-shadow-scale)) 7px -1px color-mix(in srgb, var(
+            --smooth-shadow-color,
+            currentColor
+          )
+          12%, transparent),
+    0 calc(20px * var(--smooth-shadow-scale)) 13px -2px color-mix(in srgb, var(
+            --smooth-shadow-color,
+            currentColor
+          )
+          7%, transparent),
+    0 calc(44px * var(--smooth-shadow-scale)) 19px -3px color-mix(in srgb, var(
+            --smooth-shadow-color,
+            currentColor
+          )
+          4%, transparent),
+    0 calc(79px * var(--smooth-shadow-scale)) 24px -4px color-mix(in srgb, var(
+            --smooth-shadow-color,
+            currentColor
+          )
+          2.5%, transparent),
+    0 calc(123px * var(--smooth-shadow-scale)) 28px -5px color-mix(in srgb, var(
+            --smooth-shadow-color,
+            currentColor
+          )
+          1.2%, transparent) !important;
+}
+
+@utility smooth-shadow-2xl {
+  --smooth-shadow-color: var(--tw-shadow-color, currentColor);
+  --smooth-shadow-scale: var(--smooth-shadow-scale-2xl);
+  box-shadow: 0 calc(5px * var(--smooth-shadow-scale)) calc(7px * var(--smooth-shadow-scale))
+      calc(-1px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 12%, transparent),
+    0 calc(20px * var(--smooth-shadow-scale)) calc(13px * var(--smooth-shadow-scale))
+      calc(-2px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 7%, transparent),
+    0 calc(44px * var(--smooth-shadow-scale)) calc(19px * var(--smooth-shadow-scale))
+      calc(-3px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 4%, transparent),
+    0 calc(79px * var(--smooth-shadow-scale)) calc(24px * var(--smooth-shadow-scale))
+      calc(-4px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 2.5%, transparent),
+    0 calc(123px * var(--smooth-shadow-scale)) calc(28px * var(--smooth-shadow-scale))
+      calc(-5px * var(--smooth-shadow-scale))
+      color-mix(in srgb, var(--smooth-shadow-color, currentColor) 1.2%, transparent) !important;
+}
+
+@utility smooth-shadow-none {
+  box-shadow: none !important;
+}

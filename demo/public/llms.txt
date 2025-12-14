@@ -1,0 +1,19 @@
+# TailwindCSS Smooth Shadow Plugin
+
+Soft, multi-layered shadows that extend Tailwind’s shadow scale. Utilities include `smooth-shadow` plus sizes from `smooth-shadow-xs` up to `smooth-shadow-2xl`. Color tokens like `smooth-shadow-red-500` are supported, or rely on `currentColor`.
+
+## Getting Started
+
+- README: https://github.com/flornkm/shadow-plugin/blob/main/README.md
+
+## Agent Instructions
+
+- AGENTS: https://github.com/flornkm/shadow-plugin/blob/main/AGENTS.md
+
+## Project
+
+- Repository: https://github.com/flornkm/shadow-plugin
+
+## Optional
+
+- Author: https://floriankiem.com
