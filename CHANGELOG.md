@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/flornkm/shadow-plugin/compare/v1.0.0...v1.1.0) (2026-04-11)
+
+### Features
+
+* SEO + readme ([3b6c262](https://github.com/flornkm/shadow-plugin/commit/3b6c262af791991788fea145c03df29947928d61))
+
 ## 1.0.0 (2026-04-11)
 
 ### Features
