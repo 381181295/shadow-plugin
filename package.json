@@ -7,10 +7,10 @@
     "format": "prettier --write --ignore-unknown .",
     "demo": "open demo/index.html"
   },
-  "exports": "./dist/shadow-plugin.css",
-  "main": "./dist/shadow-plugin.css",
+  "exports": "./src/index.css",
+  "main": "./src/index.css",
   "files": [
-    "dist"
+    "src"
   ],
   "keywords": [
     "shadow",
@@ -31,7 +31,7 @@
     "printWidth": 100
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.13",
-    "tailwindcss": "^4.1.13"
+    "@tailwindcss/cli": "4.1.13",
+    "tailwindcss": "4.1.13"
   }
 }
