@@ -59,7 +59,7 @@ function CodeField({ code, prefix }: { code: string; prefix?: string }) {
 }
 
 function App() {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(2);
   const [pm, setPm] = useState(0);
 
   return (
