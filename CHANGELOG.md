@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/flornkm/shadow-plugin/compare/v1.1.0...v1.1.1) (2026-04-11)
+
+### Bug Fixes
+
+* custom export ([3386d0e](https://github.com/flornkm/shadow-plugin/commit/3386d0ea0a141b91c5bed62fc9e4504786b6153e))
+* pin tailwind version ([048e8c2](https://github.com/flornkm/shadow-plugin/commit/048e8c20e4d997f5cf2874d6b042f7952aae2edb))
+
 ## [1.1.0](https://github.com/flornkm/shadow-plugin/compare/v1.0.0...v1.1.0) (2026-04-11)
 
 ### Features
