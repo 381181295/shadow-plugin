@@ -1,4 +1,4 @@
-![Smooth Shadow Plugin](demo/public/images/smooth-shadow-image.webp)
+![Smooth Shadow Plugin](https://shadow.floriankiem.com/images/smooth-shadow-image.webp)
 
 # Smooth Shadow Plugin
 
