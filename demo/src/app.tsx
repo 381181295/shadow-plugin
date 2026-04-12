@@ -48,7 +48,7 @@ function CodeField({ code, prefix }: { code: string; prefix?: string }) {
             animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
             exit={{ opacity: 0, filter: "blur(2px)", scale: 0.9 }}
             transition={{ duration: 0.12 }}
-            className="block origin-right"
+            className="block text-right origin-right"
           >
             {copied ? "Copied" : "Copy"}
           </motion.span>
