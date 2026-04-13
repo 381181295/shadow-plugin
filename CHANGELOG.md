@@ -1,3 +1,9 @@
+## [1.1.2](https://github.com/flornkm/shadow-plugin/compare/v1.1.1...v1.1.2) (2026-04-13)
+
+### Bug Fixes
+
+* simplify example ([64f5f15](https://github.com/flornkm/shadow-plugin/commit/64f5f15f75b64ba5849d9c99d5a5ed8475ab5d33))
+
 ## [1.1.1](https://github.com/flornkm/shadow-plugin/compare/v1.1.0...v1.1.1) (2026-04-11)
 
 ### Bug Fixes
