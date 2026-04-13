@@ -60,10 +60,10 @@ function App() {
   const [pm, setPm] = useState(0);
 
   return (
-    <main className="min-h-screen px-4 pt-4 pb-16">
+    <main className="min-h-screen px-4 pt-4 md:py-20">
       <div className="w-full max-w-3xl flex space-y-8 flex-col items-start mx-auto">
         <div className="space-y-2">
-          <h1 className="text-base font-semibold leading-tight">Smooth Shadow Plugin</h1>
+          <h1 className="text-base font-medium leading-tight">Smooth Shadow Plugin</h1>
           <p className="text-sm mb-1.5 leading-tight text-neutral-400">
             A simple tailwind plugin that makes your shadows finally look good.
           </p>
@@ -71,7 +71,7 @@ function App() {
 
         {/* Example */}
         <div className="w-full space-y-5">
-          <h2 className="font-semibold leading-tight">Try it out</h2>
+          <h2 className="font-medium leading-tight">Try it out</h2>
           <div className="p-8 rounded-md bg-neutral-50 space-y-6">
             <div className="flex items-center justify-center gap-8 sm:gap-16 px-4 sm:px-8 py-16 sm:py-24">
               <div className="flex flex-col items-center gap-3">
@@ -100,9 +100,7 @@ function App() {
                   onClick={() => setSelected(i)}
                   className={cn(
                     "relative px-3 py-1 cursor-pointer rounded-full text-xs font-medium transition-colors",
-                    selected === i
-                      ? "text-neutral-900"
-                      : "text-neutral-400 hover:text-neutral-500",
+                    selected === i ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-500",
                   )}
                 >
                   {selected === i && (
@@ -125,7 +123,7 @@ function App() {
 
         {/* Install */}
         <div className="w-full space-y-3">
-          <h2 className="font-semibold leading-tight">Install</h2>
+          <h2 className="font-medium leading-tight">Install</h2>
           <div className="flex items-center gap-3">
             {INSTALL_COMMANDS.map((p, i) => (
               <button
@@ -133,9 +131,7 @@ function App() {
                 onClick={() => setPm(i)}
                 className={cn(
                   "text-sm cursor-pointer font-medium transition-colors",
-                  pm === i
-                    ? "text-neutral-900"
-                    : "text-neutral-400 hover:text-neutral-500",
+                  pm === i ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-500",
                 )}
               >
                 {p.label}
@@ -147,7 +143,7 @@ function App() {
 
         {/* Usage */}
         <div className="w-full space-y-3">
-          <h2 className="font-semibold leading-tight">Usage</h2>
+          <h2 className="font-medium leading-tight">Usage</h2>
           <div>
             <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">Tailwind stylesheet</h3>
             <CodeField code="@import 'shadow-plugin';" />
