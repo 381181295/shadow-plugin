@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { IconCheckmark1Small } from "@central-icons-react/round-outlined-radius-1-stroke-2/IconCheckmark1Small";
-import { IconCrossSmall } from "@central-icons-react/round-outlined-radius-1-stroke-2/IconCrossSmall";
 import { cn } from "./utils/cn";
 
 const SIZES = [
@@ -30,12 +28,11 @@ function CodeField({ code, prefix }: { code: string; prefix?: string }) {
 
   return (
     <div className="flex items-start justify-between gap-3 w-full rounded-xl border border-neutral-200 px-4 py-3 overflow-hidden">
-      <div className="min-w-0 flex-1 relative">
+      <div className="min-w-0 flex-1 [mask-image:linear-gradient(to_right,black_calc(100%-2rem),transparent)]">
         <pre className="tabular-nums font-normal text-sm whitespace-pre overflow-x-auto scrollbar-none">
           {prefix && <span className="text-neutral-300 mr-2">{prefix}</span>}
           {code}
         </pre>
-        <div className="pointer-events-none absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent" />
       </div>
       <button
         onClick={copy}
@@ -73,54 +70,45 @@ function App() {
         </div>
 
         {/* Example */}
-        <div className="w-full">
-          <h2 className="font-semibold mb-4 leading-tight">Try it out</h2>
-          <div className="rounded-2xl border border-neutral-200 overflow-hidden">
-            <div className="flex items-center justify-center gap-8 sm:gap-16 px-4 sm:px-8 py-12 sm:py-16">
+        <div className="w-full space-y-5">
+          <h2 className="font-semibold leading-tight">Try it out</h2>
+          <div className="p-8 rounded-md bg-neutral-50 space-y-6">
+            <div className="flex items-center justify-center gap-8 sm:gap-16 px-4 sm:px-8 py-16 sm:py-24">
               <div className="flex flex-col items-center gap-3">
-                <div className="relative">
-                  <span className="absolute -top-2.5 -right-2.5 size-6 rounded-full bg-red-500 text-white border-2 border-white flex items-center justify-center">
-                    <IconCrossSmall size={16} />
-                  </span>
-                  <div
-                    className={cn(
-                      "size-24 sm:size-32 bg-white rounded-2xl border border-neutral-200 shadow-black/10 transition-shadow duration-300",
-                      SIZES[selected].tailwind,
-                    )}
-                  />
-                </div>
+                <div
+                  className={cn(
+                    "size-24 sm:size-32 bg-white rounded-2xl shadow-black/10 transition-shadow duration-300",
+                    SIZES[selected].tailwind,
+                  )}
+                />
                 <span className="text-sm text-neutral-400">Default</span>
               </div>
-              <div className="hidden sm:block w-px h-24 border-l border-dashed border-neutral-200" />
               <div className="flex flex-col items-center gap-3">
-                <div className="relative">
-                  <span className="absolute -top-2.5 -right-2.5 size-6 rounded-full bg-emerald-500 text-white border-2 border-white flex items-center justify-center">
-                    <IconCheckmark1Small size={16} />
-                  </span>
-                  <div
-                    className={cn(
-                      "size-24 sm:size-32 bg-white rounded-2xl border border-neutral-200 transition-shadow duration-300",
-                      SIZES[selected].smooth,
-                    )}
-                  />
-                </div>
+                <div
+                  className={cn(
+                    "size-24 sm:size-32 bg-white rounded-2xl transition-shadow duration-300",
+                    SIZES[selected].smooth,
+                  )}
+                />
                 <span className="text-sm text-neutral-400">Smooth</span>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-1 px-4 py-3 bg-neutral-100 border-t border-t-neutral-200">
+            <div className="flex items-center justify-center gap-1">
               {SIZES.map((size, i) => (
                 <button
                   key={size.label}
                   onClick={() => setSelected(i)}
                   className={cn(
                     "relative px-3 py-1 cursor-pointer rounded-full text-xs font-medium transition-colors",
-                    selected === i ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-500",
+                    selected === i
+                      ? "text-neutral-900"
+                      : "text-neutral-400 hover:text-neutral-500",
                   )}
                 >
                   {selected === i && (
                     <motion.span
                       layoutId="size-selector"
-                      className="absolute inset-0 bg-white rounded-full shadow-xs"
+                      className="absolute inset-0 bg-neutral-100 rounded-full"
                       transition={{
                         type: "spring",
                         duration: 0.4,
@@ -145,7 +133,9 @@ function App() {
                 onClick={() => setPm(i)}
                 className={cn(
                   "text-sm cursor-pointer font-medium transition-colors",
-                  pm === i ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-500",
+                  pm === i
+                    ? "text-neutral-900"
+                    : "text-neutral-400 hover:text-neutral-500",
                 )}
               >
                 {p.label}
