@@ -1,3 +1,9 @@
+## [1.1.3](https://github.com/flornkm/shadow-plugin/compare/v1.1.2...v1.1.3) (2026-04-13)
+
+### Bug Fixes
+
+* font weight + padding ([cbb2ba1](https://github.com/flornkm/shadow-plugin/commit/cbb2ba1d06f7a3723a87805e50d71b3671e5c53a))
+
 ## [1.1.2](https://github.com/flornkm/shadow-plugin/compare/v1.1.1...v1.1.2) (2026-04-13)
 
 ### Bug Fixes
