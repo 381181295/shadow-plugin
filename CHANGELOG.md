@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/flornkm/shadow-plugin/compare/v1.1.3...v1.2.0) (2026-07-14)
+
+### Features
+
+* add rings to shadow plugin ([3e4cdbf](https://github.com/flornkm/shadow-plugin/commit/3e4cdbf301e526f8ed159bde3d44404ea9daaac6))
+
 ## [1.1.3](https://github.com/flornkm/shadow-plugin/compare/v1.1.2...v1.1.3) (2026-04-13)
 
 ### Bug Fixes
