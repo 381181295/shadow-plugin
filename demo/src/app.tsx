@@ -57,7 +57,7 @@ function CodeField({ code, prefix }: { code: string; prefix?: string }) {
 
 function App() {
   const [selected, setSelected] = useState(2);
-  const [ring, setRing] = useState(false);
+  const [ring, setRing] = useState(true);
   const [pm, setPm] = useState(0);
 
   return (
@@ -127,8 +127,8 @@ function App() {
               <span className="hidden sm:block w-px h-4 mx-1.5 bg-neutral-200" />
               <div className="flex items-center gap-1">
                 {[
-                  { label: "No ring", value: false },
                   { label: "Ring", value: true },
+                  { label: "No ring", value: false },
                 ].map((option) => (
                   <button
                     key={option.label}
