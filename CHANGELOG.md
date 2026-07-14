@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/flornkm/shadow-plugin/compare/v1.2.0...v1.2.1) (2026-07-14)
+
+### Bug Fixes
+
+* switch around ring default setting ([593ad83](https://github.com/flornkm/shadow-plugin/commit/593ad83f5ca5f6c17142e6663bf6a193cd20a5e6))
+
 ## [1.2.0](https://github.com/flornkm/shadow-plugin/compare/v1.1.3...v1.2.0) (2026-07-14)
 
 ### Features
