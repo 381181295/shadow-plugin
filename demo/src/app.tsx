@@ -1,13 +1,13 @@
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { cn } from "./utils/cn";
 
 const SIZES = [
-  { label: "XS", smooth: "smooth-shadow-xs", tailwind: "shadow-xs" },
-  { label: "SM", smooth: "smooth-shadow-sm", tailwind: "shadow-sm" },
-  { label: "Default", smooth: "smooth-shadow", tailwind: "shadow" },
-  { label: "LG", smooth: "smooth-shadow-lg", tailwind: "shadow-lg" },
-  { label: "XL", smooth: "smooth-shadow-xl", tailwind: "shadow-xl" },
+  { label: "XS", smooth: "smooth-shadow-xs", ring: "smooth-shadow-ring-xs", tailwind: "shadow-xs" },
+  { label: "SM", smooth: "smooth-shadow-sm", ring: "smooth-shadow-ring-sm", tailwind: "shadow-sm" },
+  { label: "Default", smooth: "smooth-shadow", ring: "smooth-shadow-ring", tailwind: "shadow" },
+  { label: "LG", smooth: "smooth-shadow-lg", ring: "smooth-shadow-ring-lg", tailwind: "shadow-lg" },
+  { label: "XL", smooth: "smooth-shadow-xl", ring: "smooth-shadow-ring-xl", tailwind: "shadow-xl" },
 ];
 
 const INSTALL_COMMANDS = [
@@ -57,6 +57,7 @@ function CodeField({ code, prefix }: { code: string; prefix?: string }) {
 
 function App() {
   const [selected, setSelected] = useState(2);
+  const [ring, setRing] = useState(false);
   const [pm, setPm] = useState(0);
 
   return (
@@ -78,7 +79,7 @@ function App() {
                 <div
                   className={cn(
                     "size-24 sm:size-32 bg-white rounded-2xl shadow-black/10 transition-shadow duration-300",
-                    SIZES[selected].tailwind,
+                    SIZES[selected].tailwind
                   )}
                 />
                 <span className="text-sm text-neutral-400">Default</span>
@@ -87,36 +88,73 @@ function App() {
                 <div
                   className={cn(
                     "size-24 sm:size-32 bg-white rounded-2xl transition-shadow duration-300",
-                    SIZES[selected].smooth,
+                    ring ? SIZES[selected].ring : SIZES[selected].smooth
                   )}
                 />
-                <span className="text-sm text-neutral-400">Smooth</span>
+                <span className="text-sm text-neutral-400">
+                  {ring ? "Smooth + ring" : "Smooth"}
+                </span>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-1">
-              {SIZES.map((size, i) => (
-                <button
-                  key={size.label}
-                  onClick={() => setSelected(i)}
-                  className={cn(
-                    "relative px-3 py-1 cursor-pointer rounded-full text-xs font-medium transition-colors",
-                    selected === i ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-500",
-                  )}
-                >
-                  {selected === i && (
-                    <motion.span
-                      layoutId="size-selector"
-                      className="absolute inset-0 bg-neutral-100 rounded-full"
-                      transition={{
-                        type: "spring",
-                        duration: 0.4,
-                        bounce: 0.15,
-                      }}
-                    />
-                  )}
-                  <span className="relative z-10">{size.label}</span>
-                </button>
-              ))}
+            <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2">
+              <div className="flex items-center gap-1">
+                {SIZES.map((size, i) => (
+                  <button
+                    key={size.label}
+                    onClick={() => setSelected(i)}
+                    className={cn(
+                      "relative px-3 py-1 cursor-pointer rounded-full text-xs font-medium whitespace-nowrap transition-colors",
+                      selected === i
+                        ? "text-neutral-900"
+                        : "text-neutral-400 hover:text-neutral-500"
+                    )}
+                  >
+                    {selected === i && (
+                      <motion.span
+                        layoutId="size-selector"
+                        className="absolute inset-0 bg-neutral-100 rounded-full"
+                        transition={{
+                          type: "spring",
+                          duration: 0.4,
+                          bounce: 0.15,
+                        }}
+                      />
+                    )}
+                    <span className="relative z-10">{size.label}</span>
+                  </button>
+                ))}
+              </div>
+              <span className="hidden sm:block w-px h-4 mx-1.5 bg-neutral-200" />
+              <div className="flex items-center gap-1">
+                {[
+                  { label: "No ring", value: false },
+                  { label: "Ring", value: true },
+                ].map((option) => (
+                  <button
+                    key={option.label}
+                    onClick={() => setRing(option.value)}
+                    className={cn(
+                      "relative px-3 py-1 cursor-pointer rounded-full text-xs font-medium whitespace-nowrap transition-colors",
+                      ring === option.value
+                        ? "text-neutral-900"
+                        : "text-neutral-400 hover:text-neutral-500"
+                    )}
+                  >
+                    {ring === option.value && (
+                      <motion.span
+                        layoutId="ring-selector"
+                        className="absolute inset-0 bg-neutral-100 rounded-full"
+                        transition={{
+                          type: "spring",
+                          duration: 0.4,
+                          bounce: 0.15,
+                        }}
+                      />
+                    )}
+                    <span className="relative z-10">{option.label}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -131,7 +169,7 @@ function App() {
                 onClick={() => setPm(i)}
                 className={cn(
                   "text-sm cursor-pointer font-medium transition-colors",
-                  pm === i ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-500",
+                  pm === i ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-500"
                 )}
               >
                 {p.label}
@@ -151,6 +189,18 @@ function App() {
           <div>
             <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">Element classes</h3>
             <CodeField code="<div className='smooth-shadow-md' />" />
+          </div>
+          <div>
+            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">
+              Shadow + ring for elevated surfaces
+            </h3>
+            <CodeField code="<div className='smooth-shadow-ring-md' />" />
+          </div>
+          <div>
+            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">
+              Adjust ring and shadow color independently
+            </h3>
+            <CodeField code="<div className='smooth-shadow-ring-md smooth-ring-blue-500/40 shadow-red-500' />" />
           </div>
           <div>
             <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">
