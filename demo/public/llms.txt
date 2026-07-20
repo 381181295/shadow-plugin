@@ -9,6 +9,8 @@ Soft, multi-layered shadows that extend Tailwind’s shadow scale. Utilities inc
 ## Agent Instructions
 
 - AGENTS: https://github.com/flornkm/shadow-plugin/blob/main/AGENTS.md
+- Skill (avoid double borders, use smooth-shadow-ring): https://github.com/flornkm/shadow-plugin/blob/main/.claude/skills/smooth-shadow-ring/SKILL.md
+- Cursor Bugbot rule: https://github.com/flornkm/shadow-plugin/blob/main/BUGBOT.md
 
 ## Project
 

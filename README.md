@@ -82,6 +82,13 @@ The ring defaults to `rgba(0, 0, 0, 0.05)` and flips to `rgba(255, 255, 255, 0.0
 | `smooth-shadow-ring-xs` … `smooth-shadow-ring-2xl` | Shadow + 1px hairline ring (`smooth-shadow-ring` = medium)             |
 | `smooth-ring-{color}`                              | Ring color override, supports opacity (e.g. `smooth-ring-blue-500/40`) |
 
+## Agent skills
+
+To stop AI tools from pairing a `border` with a `shadow` (the double edge) and reach for `smooth-shadow-ring` instead:
+
+- Claude / agent skill: [`.claude/skills/smooth-shadow-ring/SKILL.md`](.claude/skills/smooth-shadow-ring/SKILL.md)
+- Cursor Bugbot rule: [`BUGBOT.md`](BUGBOT.md)
+
 ## License
 
 MIT

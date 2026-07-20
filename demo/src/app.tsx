@@ -1,6 +1,62 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { cn } from "./utils/cn";
+import skillContent from "../../.claude/skills/smooth-shadow-ring/SKILL.md?raw";
+import bugbotContent from "../../BUGBOT.md?raw";
+
+const GITHUB_URL = "https://github.com/flornkm/shadow-plugin";
+
+function GitHubIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23a11.5 11.5 0 0 1 3-.405c1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+    </svg>
+  );
+}
+
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const copy = () => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  return (
+    <button
+      onClick={copy}
+      className="relative text-sm cursor-pointer text-neutral-400 hover:text-neutral-600 font-medium h-5 w-12 shrink-0"
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={copied ? "copied" : "copy"}
+          initial={{ opacity: 0, filter: "blur(2px)", scale: 0.9 }}
+          animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+          exit={{ opacity: 0, filter: "blur(2px)", scale: 0.9 }}
+          transition={{ duration: 0.12 }}
+          className="block text-right origin-right"
+        >
+          {copied ? "Copied" : "Copy"}
+        </motion.span>
+      </AnimatePresence>
+    </button>
+  );
+}
+
+function CopyBlock({ filename, content }: { filename: string; content: string }) {
+  return (
+    <div className="w-full rounded-xl border border-neutral-200 overflow-hidden">
+      <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-neutral-200">
+        <span className="min-w-0 truncate font-mono text-xs text-neutral-400">{filename}</span>
+        <CopyButton text={content} />
+      </div>
+      <pre className="tabular-nums font-mono text-xs leading-relaxed text-neutral-600 p-4 max-h-80 overflow-auto whitespace-pre scrollbar-none">
+        {content.trim()}
+      </pre>
+    </div>
+  );
+}
 
 const SIZES = [
   { label: "XS", smooth: "smooth-shadow-xs", ring: "smooth-shadow-ring-xs", tailwind: "shadow-xs" },
@@ -209,6 +265,66 @@ function App() {
             <CodeField
               code={`@theme {\n  --shadow-xs: var(--smooth-shadow-xs);\n  --shadow-sm: var(--smooth-shadow-sm);\n  --shadow-md: var(--smooth-shadow-md);\n  --shadow-lg: var(--smooth-shadow-lg);\n  --shadow-xl: var(--smooth-shadow-xl);\n  --shadow-2xl: var(--smooth-shadow-2xl);\n}`}
             />
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-neutral-200" />
+
+        {/* Agent skills */}
+        <div className="w-full space-y-4">
+          <div className="space-y-2">
+            <h2 className="font-medium leading-tight">Agent skills</h2>
+            <p className="text-sm leading-tight text-neutral-400">
+              Drop these into your AI tools so they stop pairing a{" "}
+              <code className="font-mono text-neutral-500">border</code> with a{" "}
+              <code className="font-mono text-neutral-500">shadow</code> — the double edge — and
+              reach for <code className="font-mono text-neutral-500">smooth-shadow-ring</code>{" "}
+              instead.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">Claude / agent skill</h3>
+            <CopyBlock filename=".claude/skills/smooth-shadow-ring/SKILL.md" content={skillContent} />
+          </div>
+          <div>
+            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">Cursor Bugbot rule</h3>
+            <CopyBlock filename="BUGBOT.md" content={bugbotContent} />
+          </div>
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 smooth-shadow-ring-sm hover:bg-neutral-50 transition-colors"
+          >
+            <GitHubIcon className="size-4" />
+            Star on GitHub
+          </a>
+        </div>
+
+        {/* About / SEO */}
+        <div className="w-full space-y-3">
+          <h2 className="font-medium leading-tight">About the Smooth Shadow Plugin</h2>
+          <div className="space-y-3 text-sm leading-relaxed text-neutral-500">
+            <p>
+              The Smooth Shadow Plugin is a tiny CSS-only Tailwind CSS plugin that replaces
+              Tailwind’s flat, single-layer shadows with soft, multi-layered ones. Each{" "}
+              <code className="font-mono text-neutral-600">smooth-shadow</code> size stacks several
+              blurred layers at falling opacity, so elevation reads as depth instead of a grey
+              smudge. It ships as pure CSS utilities — no config, no runtime.
+            </p>
+            <p>
+              For elevated surfaces like cards, dialogs, popovers, dropdowns and menus, the{" "}
+              <code className="font-mono text-neutral-600">smooth-shadow-ring</code> utilities bake a
+              1px hairline ring into the shadow’s final layer. That avoids the double-border
+              artifact you get from putting a <code className="font-mono text-neutral-600">border</code>{" "}
+              next to a <code className="font-mono text-neutral-600">shadow</code> — a hard line with
+              the shadow starting just outside it — and gives you a single, continuous edge. The
+              ring and shadow tint independently via{" "}
+              <code className="font-mono text-neutral-600">smooth-ring-{"{color}"}</code> and{" "}
+              <code className="font-mono text-neutral-600">shadow-{"{color}"}</code>, and the ring
+              adapts to dark mode automatically.
+            </p>
           </div>
         </div>
 
