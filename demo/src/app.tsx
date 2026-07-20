@@ -284,11 +284,11 @@ function App() {
             </p>
           </div>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">Claude / agent skill</h3>
+            <h3 className="text-sm mb-1.5 leading-tight text-neutral-900">Claude / agent skill</h3>
             <CopyBlock filename=".claude/skills/smooth-shadow-ring/SKILL.md" content={skillContent} />
           </div>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">Cursor Bugbot rule</h3>
+            <h3 className="text-sm mb-1.5 leading-tight text-neutral-900">Cursor Bugbot rule</h3>
             <CopyBlock filename="BUGBOT.md" content={bugbotContent} />
           </div>
           <a
