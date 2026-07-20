@@ -31,12 +31,13 @@ body {
   @apply antialiased bg-white dark:bg-black dark:text-white text-sm font-[450];
 }
 
-/* Keep the smooth-shadow ring hairline visible on dark backgrounds. The plugin
-   redefines --smooth-ring-color under a `.dark` class; this demo uses
-   media-query dark mode, so wire it up here (as the plugin CSS suggests). */
+/* Invert the smooth-shadow ring hairline in dark mode: a transparent white
+   edge instead of the default transparent black (which vanishes on dark
+   backgrounds). The plugin redefines --smooth-ring-color under a `.dark`
+   class; this demo uses media-query dark mode, so wire it up here. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --smooth-ring-color: rgba(255, 255, 255, 0.06);
+    --smooth-ring-color: rgba(255, 255, 255, 0.14);
   }
 }
 
