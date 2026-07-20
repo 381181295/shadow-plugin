@@ -2,6 +2,12 @@
 
 Soft, multi-layered shadows that extend Tailwind’s shadow scale. Utilities include `smooth-shadow` plus sizes from `smooth-shadow-xs` up to `smooth-shadow-2xl`. Color tokens like `smooth-shadow-red-500` are supported, or rely on `currentColor`.
 
+## About
+
+The Smooth Shadow Plugin is a tiny CSS-only Tailwind CSS plugin that replaces Tailwind’s flat, single-layer shadows with soft, multi-layered ones. Each `smooth-shadow` size stacks several blurred layers at falling opacity, so elevation reads as depth instead of a grey smudge. It ships as pure CSS utilities with no config and no runtime.
+
+For elevated surfaces like cards, dialogs, popovers, dropdowns and menus, the `smooth-shadow-ring` utilities bake a 1px hairline ring into the shadow’s final layer. That avoids the double-border artifact you get from putting a `border` next to a `shadow` (a hard line with the shadow starting just outside it) and gives you a single, continuous edge. The ring and shadow tint independently via `smooth-ring-{color}` and `shadow-{color}`, and the ring adapts to dark mode automatically.
+
 ## Getting Started
 
 - README: https://github.com/flornkm/shadow-plugin/blob/main/README.md

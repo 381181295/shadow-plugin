@@ -32,13 +32,13 @@ The plugin supports Tailwind's shadow color utilities:
 
 ### Shadow + ring
 
-For elevated surfaces (dialogs, popovers, cards, menus), use `smooth-shadow-ring-{size}` — the same stacked shadow with a 1px hairline ring baked in as the final layer, so the edge morphs into the shadow instead of sitting next to it as a separate `border`. Don't add a `border`/`ring` on top; the ring is already in there.
+For elevated surfaces (dialogs, popovers, cards, menus), use `smooth-shadow-ring-{size}`, the same stacked shadow with a 1px hairline ring baked in as the final layer, so the edge morphs into the shadow instead of sitting next to it as a separate `border`. Don't add a `border`/`ring` on top; the ring is already in there.
 
 ```html
 <div class="smooth-shadow-ring-md" />
 ```
 
-The ring and the shadow are colored independently — `shadow-{color}` tints the shadow, `smooth-ring-{color}` tints the ring, and they compose freely:
+The ring and the shadow are colored independently. `shadow-{color}` tints the shadow, `smooth-ring-{color}` tints the ring, and they compose freely:
 
 ```html
 <div class="smooth-shadow-ring-md smooth-ring-black/10" />

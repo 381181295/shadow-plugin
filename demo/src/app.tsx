@@ -278,7 +278,7 @@ function App() {
             <p className="text-sm leading-tight text-neutral-400">
               Drop these into your AI tools so they stop pairing a{" "}
               <code className="font-mono text-neutral-500">border</code> with a{" "}
-              <code className="font-mono text-neutral-500">shadow</code> — the double edge — and
+              <code className="font-mono text-neutral-500">shadow</code> (the double edge) and
               reach for <code className="font-mono text-neutral-500">smooth-shadow-ring</code>{" "}
               instead.
             </p>
@@ -295,37 +295,11 @@ function App() {
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 smooth-shadow-ring-sm hover:bg-neutral-50 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-neutral-900 smooth-shadow-ring-sm hover:bg-neutral-50 transition-colors"
           >
-            <GitHubIcon className="size-4" />
+            <GitHubIcon className="size-3.5" />
             Star on GitHub
           </a>
-        </div>
-
-        {/* About / SEO */}
-        <div className="w-full space-y-3">
-          <h2 className="font-medium leading-tight">About the Smooth Shadow Plugin</h2>
-          <div className="space-y-3 text-sm leading-relaxed text-neutral-500">
-            <p>
-              The Smooth Shadow Plugin is a tiny CSS-only Tailwind CSS plugin that replaces
-              Tailwind’s flat, single-layer shadows with soft, multi-layered ones. Each{" "}
-              <code className="font-mono text-neutral-600">smooth-shadow</code> size stacks several
-              blurred layers at falling opacity, so elevation reads as depth instead of a grey
-              smudge. It ships as pure CSS utilities — no config, no runtime.
-            </p>
-            <p>
-              For elevated surfaces like cards, dialogs, popovers, dropdowns and menus, the{" "}
-              <code className="font-mono text-neutral-600">smooth-shadow-ring</code> utilities bake a
-              1px hairline ring into the shadow’s final layer. That avoids the double-border
-              artifact you get from putting a <code className="font-mono text-neutral-600">border</code>{" "}
-              next to a <code className="font-mono text-neutral-600">shadow</code> — a hard line with
-              the shadow starting just outside it — and gives you a single, continuous edge. The
-              ring and shadow tint independently via{" "}
-              <code className="font-mono text-neutral-600">smooth-ring-{"{color}"}</code> and{" "}
-              <code className="font-mono text-neutral-600">shadow-{"{color}"}</code>, and the ring
-              adapts to dark mode automatically.
-            </p>
-          </div>
         </div>
 
         <p className="text-sm text-neutral-400 pt-4">

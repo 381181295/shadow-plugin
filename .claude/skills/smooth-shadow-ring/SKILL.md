@@ -13,8 +13,8 @@ popovers, dropdowns, menus, tooltips, sheets, toasts, command palettes.
 ## The problem
 
 Putting a `border-*` (or `ring-*`) and a `shadow-*` on the same element draws
-two stacked edges — the border paints a hard 1px stroke, and the shadow begins
-just outside it. The result is a visible double border: a crisp line, then a
+two stacked edges: the border paints a hard 1px stroke, and the shadow begins
+just outside it. The result is a visible double border, a crisp line then a
 soft one. It looks heavy, greyed, and cheap.
 
 ## The rule
@@ -30,14 +30,14 @@ as one continuous stroke.
 - Never keep a `border` or `ring` on an element that already has
   `smooth-shadow-ring-*`. The ring is already in there; a second edge doubles up.
 - If the surface should have no edge stroke at all, use plain
-  `smooth-shadow-{size}` (no ring) — not a border.
+  `smooth-shadow-{size}` (no ring), not a border.
 
 ## Coloring
 
 The ring and shadow tint independently and compose on the same element:
 
-- `shadow-{color}` tints the shadow — e.g. `shadow-blue-500`
-- `smooth-ring-{color}` tints the ring — e.g. `smooth-ring-black/10`, `smooth-ring-blue-500/40`
+- `shadow-{color}` tints the shadow, e.g. `shadow-blue-500`
+- `smooth-ring-{color}` tints the ring, e.g. `smooth-ring-black/10`, `smooth-ring-blue-500/40`
 
 The ring defaults to `rgba(0,0,0,0.05)` and flips to `rgba(255,255,255,0.06)`
 under a `.dark` class.
