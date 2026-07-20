@@ -26,7 +26,7 @@ function CopyButton({ text }: { text: string }) {
   return (
     <button
       onClick={copy}
-      className="relative text-sm cursor-pointer text-neutral-400 hover:text-neutral-600 font-medium h-5 w-12 shrink-0"
+      className="relative text-sm cursor-pointer text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 font-medium h-5 w-12 shrink-0"
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
@@ -46,12 +46,12 @@ function CopyButton({ text }: { text: string }) {
 
 function CopyBlock({ filename, content }: { filename: string; content: string }) {
   return (
-    <div className="w-full rounded-xl border border-neutral-200 overflow-hidden">
-      <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-neutral-200">
+    <div className="w-full rounded-xl border border-neutral-200 dark:border-neutral-800 overflow-hidden">
+      <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-neutral-200 dark:border-neutral-800">
         <span className="min-w-0 truncate font-mono text-xs text-neutral-400">{filename}</span>
         <CopyButton text={content} />
       </div>
-      <pre className="tabular-nums font-mono text-xs leading-relaxed text-neutral-600 p-4 max-h-80 overflow-auto whitespace-pre scrollbar-none">
+      <pre className="tabular-nums font-mono text-xs leading-relaxed text-neutral-600 dark:text-neutral-300 p-4 max-h-80 overflow-auto whitespace-pre scrollbar-none">
         {content.trim()}
       </pre>
     </div>
@@ -83,16 +83,16 @@ function CodeField({ code, prefix }: { code: string; prefix?: string }) {
   };
 
   return (
-    <div className="flex items-start justify-between gap-3 w-full rounded-xl border border-neutral-200 px-4 py-3 overflow-hidden">
+    <div className="flex items-start justify-between gap-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 px-4 py-3 overflow-hidden">
       <div className="min-w-0 flex-1 [mask-image:linear-gradient(to_right,black_calc(100%-2rem),transparent)]">
         <pre className="tabular-nums font-normal text-sm whitespace-pre overflow-x-auto scrollbar-none">
-          {prefix && <span className="text-neutral-300 mr-2">{prefix}</span>}
+          {prefix && <span className="text-neutral-300 dark:text-neutral-600 mr-2">{prefix}</span>}
           {code}
         </pre>
       </div>
       <button
         onClick={copy}
-        className="relative text-sm cursor-pointer text-neutral-400 hover:text-neutral-600 font-medium h-5 w-12 shrink-0"
+        className="relative text-sm cursor-pointer text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 font-medium h-5 w-12 shrink-0"
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.span
@@ -129,12 +129,12 @@ function App() {
         {/* Example */}
         <div className="w-full space-y-5">
           <h2 className="font-medium leading-tight">Try it out</h2>
-          <div className="p-8 rounded-md bg-neutral-50 space-y-6">
+          <div className="p-8 rounded-md bg-neutral-50 dark:bg-neutral-900 space-y-6">
             <div className="flex items-center justify-center gap-8 sm:gap-16 px-4 sm:px-8 py-16 sm:py-24">
               <div className="flex flex-col items-center gap-3">
                 <div
                   className={cn(
-                    "size-24 sm:size-32 bg-white rounded-2xl shadow-black/10 transition-shadow duration-300",
+                    "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl shadow-black/10 dark:shadow-white/10 transition-shadow duration-300",
                     SIZES[selected].tailwind
                   )}
                 />
@@ -143,7 +143,7 @@ function App() {
               <div className="flex flex-col items-center gap-3">
                 <div
                   className={cn(
-                    "size-24 sm:size-32 bg-white rounded-2xl transition-shadow duration-300",
+                    "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl transition-shadow duration-300",
                     ring ? SIZES[selected].ring : SIZES[selected].smooth
                   )}
                 />
@@ -161,14 +161,14 @@ function App() {
                     className={cn(
                       "relative px-3 py-1 cursor-pointer rounded-full text-xs font-medium whitespace-nowrap transition-colors",
                       selected === i
-                        ? "text-neutral-900"
+                        ? "text-neutral-900 dark:text-white"
                         : "text-neutral-400 hover:text-neutral-500"
                     )}
                   >
                     {selected === i && (
                       <motion.span
                         layoutId="size-selector"
-                        className="absolute inset-0 bg-neutral-100 rounded-full"
+                        className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-full"
                         transition={{
                           type: "spring",
                           duration: 0.4,
@@ -180,7 +180,7 @@ function App() {
                   </button>
                 ))}
               </div>
-              <span className="hidden sm:block w-px h-4 mx-1.5 bg-neutral-200" />
+              <span className="hidden sm:block w-px h-4 mx-1.5 bg-neutral-200 dark:bg-neutral-700" />
               <div className="flex items-center gap-1">
                 {[
                   { label: "Ring", value: true },
@@ -192,14 +192,14 @@ function App() {
                     className={cn(
                       "relative px-3 py-1 cursor-pointer rounded-full text-xs font-medium whitespace-nowrap transition-colors",
                       ring === option.value
-                        ? "text-neutral-900"
+                        ? "text-neutral-900 dark:text-white"
                         : "text-neutral-400 hover:text-neutral-500"
                     )}
                   >
                     {ring === option.value && (
                       <motion.span
                         layoutId="ring-selector"
-                        className="absolute inset-0 bg-neutral-100 rounded-full"
+                        className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-full"
                         transition={{
                           type: "spring",
                           duration: 0.4,
@@ -225,7 +225,9 @@ function App() {
                 onClick={() => setPm(i)}
                 className={cn(
                   "text-sm cursor-pointer font-medium transition-colors",
-                  pm === i ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-500"
+                  pm === i
+                    ? "text-neutral-900 dark:text-white"
+                    : "text-neutral-400 hover:text-neutral-500"
                 )}
               >
                 {p.label}
@@ -269,7 +271,7 @@ function App() {
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-neutral-200" />
+        <div className="w-full h-px bg-neutral-200 dark:bg-neutral-800" />
 
         {/* Agent skills */}
         <div className="w-full space-y-4">
@@ -277,25 +279,25 @@ function App() {
             <h2 className="font-medium leading-tight">Agent skills</h2>
             <p className="text-sm leading-tight text-neutral-400">
               Drop these into your AI tools so they stop pairing a{" "}
-              <code className="font-mono text-neutral-500">border</code> with a{" "}
-              <code className="font-mono text-neutral-500">shadow</code> (the double edge) and
-              reach for <code className="font-mono text-neutral-500">smooth-shadow-ring</code>{" "}
+              <code className="font-mono text-neutral-500 dark:text-neutral-400">border</code> with a{" "}
+              <code className="font-mono text-neutral-500 dark:text-neutral-400">shadow</code> (the double edge) and
+              reach for <code className="font-mono text-neutral-500 dark:text-neutral-400">smooth-shadow-ring</code>{" "}
               instead.
             </p>
           </div>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-900">Claude / agent skill</h3>
+            <h3 className="text-sm mb-1.5 leading-tight text-neutral-900 dark:text-white">Claude / agent skill</h3>
             <CopyBlock filename=".claude/skills/smooth-shadow-ring/SKILL.md" content={skillContent} />
           </div>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-900">Cursor Bugbot rule</h3>
+            <h3 className="text-sm mb-1.5 leading-tight text-neutral-900 dark:text-white">Cursor Bugbot rule</h3>
             <CopyBlock filename="BUGBOT.md" content={bugbotContent} />
           </div>
           <a
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-neutral-900 smooth-shadow-ring-sm hover:bg-neutral-50 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-full bg-white dark:bg-neutral-800 px-3 py-1.5 text-xs font-medium text-neutral-900 dark:text-white smooth-shadow-ring-sm hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors"
           >
             <GitHubIcon className="size-3.5" />
             Star on GitHub
@@ -307,7 +309,7 @@ function App() {
           <a
             href="https://x.com/nilseller"
             target="_blank"
-            className="text-neutral-500 hover:text-neutral-900 transition-colors"
+            className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
           >
             Nils Eller
           </a>
@@ -315,7 +317,7 @@ function App() {
           <a
             href="https://x.com/eduardwieandt"
             target="_blank"
-            className="text-neutral-500 hover:text-neutral-900 transition-colors"
+            className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
           >
             Eduard Wieandt
           </a>
@@ -323,7 +325,7 @@ function App() {
           <a
             href="https://x.com/flornkm"
             target="_blank"
-            className="text-neutral-500 hover:text-neutral-900 transition-colors"
+            className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
           >
             Florian Kiem
           </a>
