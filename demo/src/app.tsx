@@ -118,7 +118,7 @@ function App() {
 
   return (
     <main className="min-h-screen px-4 pt-4 pb-8 md:py-20">
-      <div className="w-full max-w-3xl flex space-y-8 flex-col items-start mx-auto">
+      <div className="w-full max-w-3xl flex space-y-12 flex-col items-start mx-auto">
         <div className="space-y-2">
           <h1 className="text-base font-medium leading-tight">Smooth Shadow Plugin</h1>
           <p className="text-sm mb-1.5 leading-tight text-neutral-400">
@@ -274,7 +274,7 @@ function App() {
         <div className="w-full h-px bg-neutral-200 dark:bg-neutral-800" />
 
         {/* Agent skills */}
-        <div className="w-full space-y-4">
+        <div className="w-full space-y-8">
           <div className="space-y-2">
             <h2 className="font-medium leading-tight">Agent skills</h2>
             <p className="text-sm leading-tight text-neutral-400">
