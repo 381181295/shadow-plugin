@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, useAnimationControls, useReducedMotion } from "motion/react";
 import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { CodeField } from "./code-field";
 import { cn } from "../utils/cn";
@@ -137,6 +137,20 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
   const activeTarget: Target = ring ? target : "shadow";
   const shadowTinted = colors.shadow !== DEFAULT_SHADOW;
 
+  /* Elevation is a physical claim, so changing it should read as the surface
+     settling into a new height rather than a cross-fade. Both previews dip and
+     spring back together whenever the size or the ring changes — slow in, slow
+     out, with the overshoot doing the follow-through. */
+  const settle = useAnimationControls();
+  const reduceMotion = useReducedMotion();
+  useEffect(() => {
+    if (reduceMotion) return;
+    settle.start({
+      scale: [0.97, 1],
+      transition: { duration: 0.45, ease: [0.34, 1.56, 0.64, 1] },
+    });
+  }, [selected, ring, settle, reduceMotion]);
+
   const size = SIZES[selected];
   const classString = [
     ring ? size.ring : size.smooth,
@@ -152,9 +166,10 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
       <div className="p-8 rounded-md bg-neutral-50 dark:bg-neutral-900 space-y-6">
         <div className="flex items-center justify-center gap-8 sm:gap-16 px-4 sm:px-8 py-12 sm:py-16">
           <div className="flex flex-col items-center gap-3">
-            <div
+            <motion.div
+              animate={settle}
               className={cn(
-                "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl shadow-black/10 dark:shadow-white/10 transition-shadow duration-300",
+                "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl shadow-black/10 dark:shadow-white/10 transition-shadow duration-500 ease-out",
                 size.tailwind
               )}
               style={
@@ -168,9 +183,10 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
             <span className="text-sm text-neutral-400">Default</span>
           </div>
           <div className="flex flex-col items-center gap-3">
-            <div
+            <motion.div
+              animate={settle}
               className={cn(
-                "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl transition-shadow duration-300",
+                "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl transition-shadow duration-500 ease-out",
                 ring ? size.ring : size.smooth
               )}
               style={
