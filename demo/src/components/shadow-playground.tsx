@@ -70,30 +70,49 @@ function tokenFor(hex: string) {
   return SWATCHES.find((swatch) => swatch.hex === hex)?.token ?? `[${hex}]`;
 }
 
-function Pill({
+/* One row per decision: name on the left, its options on the right. Same shape
+   as the gradient-border configurator's "Stops" row, so every control on the
+   page reads on a single axis instead of three. */
+function Control({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div className="flex items-center justify-between gap-3">
+      <span className="text-sm text-neutral-500">{label}</span>
+      <div className="flex items-center gap-1">{children}</div>
+    </div>
+  );
+}
+
+function Option({
   active,
   layoutId,
   onClick,
+  disabled,
   children,
 }: {
   active: boolean;
   layoutId: string;
   onClick: () => void;
+  disabled?: boolean;
   children: ReactNode;
 }) {
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       className={cn(
-        "relative px-3 py-1 cursor-pointer rounded-full text-xs font-medium whitespace-nowrap transition-colors",
-        active ? "text-neutral-900 dark:text-white" : "text-neutral-400 hover:text-neutral-500"
+        "relative text-xs px-2 py-0.5 rounded-md whitespace-nowrap transition-colors",
+        disabled
+          ? "cursor-not-allowed text-neutral-300 dark:text-neutral-700"
+          : active
+            ? "cursor-pointer text-neutral-900 dark:text-white font-medium"
+            : "cursor-pointer text-neutral-400 hover:text-neutral-500"
       )}
     >
       {active && (
         <motion.span
           layoutId={layoutId}
-          className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-full"
-          transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
+          className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-md"
+          transition={{ type: "spring", duration: 0.35, bounce: 0.15 }}
         />
       )}
       <span className="relative z-10">{children}</span>
@@ -166,71 +185,52 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2">
-          <div className="flex items-center gap-1">
+        {/* One decision per row — size, then ring, then which of the two the
+            swatches below are tinting. */}
+        <div className="space-y-3">
+          <Control label="Size">
             {SIZES.map((option, i) => (
-              <Pill
+              <Option
                 key={option.label}
                 active={selected === i}
                 layoutId="size-selector"
                 onClick={() => setSelected(i)}
               >
                 {option.label}
-              </Pill>
+              </Option>
             ))}
-          </div>
-          <span className="hidden sm:block shrink-0 w-px h-4 mx-1.5 bg-neutral-200 dark:bg-neutral-700" />
-          <div className="flex items-center gap-1">
+          </Control>
+
+          <Control label="Ring">
             {[
-              { label: "Ring", value: true },
-              { label: "No ring", value: false },
+              { label: "on", value: true },
+              { label: "off", value: false },
             ].map((option) => (
-              <Pill
+              <Option
                 key={option.label}
                 active={ring === option.value}
                 layoutId="ring-selector"
                 onClick={() => setRing(option.value)}
               >
                 {option.label}
-              </Pill>
+              </Option>
             ))}
-          </div>
-        </div>
+          </Control>
 
-        <div className="h-px bg-neutral-200/70 dark:bg-neutral-800" />
+          <Control label="Color">
+            {(["shadow", "ring"] as const).map((key) => (
+              <Option
+                key={key}
+                active={activeTarget === key}
+                layoutId="target-selector"
+                disabled={key === "ring" && !ring}
+                onClick={() => setTarget(key)}
+              >
+                {key}
+              </Option>
+            ))}
+          </Control>
 
-        {/* Color — the ring and the shadow tint independently, so pick a target first.
-            Same selector and swatch grid as the gradient-border plugin demo. */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-neutral-500">Color</span>
-            <div className="flex items-center gap-1">
-              {(["shadow", "ring"] as const).map((key) => (
-                <button
-                  key={key}
-                  onClick={() => setTarget(key)}
-                  disabled={key === "ring" && !ring}
-                  className={cn(
-                    "relative text-xs px-2 py-0.5 rounded-md transition-colors",
-                    key === "ring" && !ring
-                      ? "cursor-not-allowed text-neutral-300 dark:text-neutral-700"
-                      : activeTarget === key
-                        ? "cursor-pointer text-neutral-900 dark:text-white font-medium"
-                        : "cursor-pointer text-neutral-400 hover:text-neutral-500"
-                  )}
-                >
-                  {activeTarget === key && (
-                    <motion.span
-                      layoutId="target-bg"
-                      className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-md"
-                      transition={{ type: "spring", duration: 0.35, bounce: 0.15 }}
-                    />
-                  )}
-                  <span className="relative z-10">{key}</span>
-                </button>
-              ))}
-            </div>
-          </div>
           <div className="flex gap-1 flex-wrap">
             {SWATCHES.map(({ hex, token }) => (
               <motion.button
