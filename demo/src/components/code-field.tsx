@@ -8,12 +8,16 @@ export function CodeField({
   prefix,
   language,
   wrap = false,
+  plain = false,
 }: {
   code: string;
   prefix?: string;
   language?: Language;
   /** Let long snippets break onto a second line instead of scrolling under the fade. */
   wrap?: boolean;
+  /** Drop the syntax colors. For snippets that live next to a color picker,
+      where a second palette in the code is one palette too many. */
+  plain?: boolean;
 }) {
   return (
     <div className="flex items-start justify-between gap-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 px-4 py-3 overflow-hidden">
@@ -25,14 +29,15 @@ export function CodeField({
       >
         <pre
           className={cn(
-            "tabular-nums font-normal text-sm text-neutral-600 dark:text-neutral-300",
+            "tabular-nums font-normal text-sm",
+            plain ? "text-neutral-900 dark:text-white" : "text-neutral-600 dark:text-neutral-300",
             wrap
               ? "whitespace-pre-wrap break-words"
               : "whitespace-pre overflow-x-auto scrollbar-none"
           )}
         >
           {prefix && <span className="text-neutral-300 dark:text-neutral-600 mr-2">{prefix}</span>}
-          {highlight(code, language ?? detectLanguage(code))}
+          {plain ? code : highlight(code, language ?? detectLanguage(code))}
         </pre>
       </div>
       <CopyButton text={code} />

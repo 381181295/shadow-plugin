@@ -252,7 +252,7 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
           </div>
         </div>
 
-        <CodeField code={`<div className="${classString}" />`} language="html" wrap />
+        <CodeField code={`<div className="${classString}" />`} wrap plain />
       </div>
     </div>
   );
