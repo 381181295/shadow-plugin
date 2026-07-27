@@ -7,15 +7,16 @@
       Source for demo/public/images/hero.webp. Rendered headless at exactly
       1200x420 by ./render.sh — edit here, re-run that, never touch the .webp.
 
-      No background: the export carries an alpha channel so the README picks up
-      whichever ground GitHub is using. Caveat worth knowing — a shadow is dark
-      pixels at low alpha, so on GitHub's dark theme these fall into the ground
-      and the cards read as floating. A dark twin behind <picture> is the fix if
-      that ever matters.
+      One panel wearing smooth-shadow-ring-xl on a transparent ground, so the
+      README picks up whichever background GitHub is using.
 
-      Shadow percentages are the plugin's real xl values from src/shadows.css
-      with the shadow colour swapped, so the tint is as strong as it genuinely
-      gets — not inflated to flatter the image.
+      Why a white panel still works on GitHub's dark theme: the card reads as a
+      card either way — on white it is defined by the shadow halo and the ring,
+      on dark by its own brightness. The shadow itself only shows on the light
+      theme, which is the honest limit of a single alpha export; a dark twin
+      behind <picture> is the fix if that ever matters more than one file does.
+
+      Values are verbatim smooth-shadow-ring-xl from src/shadow-ring.css.
     -->
     <style>
       html,
@@ -32,33 +33,27 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 54px;
       }
 
-      .card {
-        width: 206px;
-        height: 206px;
-        border-radius: 38px;
+      .panel {
+        width: 780px;
+        height: 236px;
+        border-radius: 32px;
         background: #fff;
         box-shadow:
-          0 40px 80px 0 color-mix(in srgb, var(--c) 6%, transparent),
-          0 20px 40px 0 color-mix(in srgb, var(--c) 5%, transparent),
-          0 10px 20px 0 color-mix(in srgb, var(--c) 4%, transparent),
-          0 5px 10px 0 color-mix(in srgb, var(--c) 3%, transparent),
-          0 2px 4px 0 color-mix(in srgb, var(--c) 2%, transparent),
-          /* 30% is the demo's own RING_ALPHA. It also happens to be what makes
-             this work as an alpha export: the cards are white, so on GitHub's
-             white README they'd otherwise dissolve into the page and only the
-             shadow would show. The ring is what holds their shape on a light
-             ground, and it costs nothing on a dark one. */
-          0 0 0 1.5px color-mix(in srgb, var(--c) 30%, transparent);
+          0 40px 80px 0 rgba(0, 0, 0, 0.06),
+          0 20px 40px 0 rgba(0, 0, 0, 0.05),
+          0 10px 20px 0 rgba(0, 0, 0, 0.04),
+          0 5px 10px 0 rgba(0, 0, 0, 0.03),
+          0 2px 4px 0 rgba(0, 0, 0, 0.02),
+          /* The plugin's own hairline is rgba(0,0,0,0.05). Nudged to 0.08 so it
+             still separates the panel from a pure-white README once the image
+             has been scaled down in a browser. */
+          0 0 0 1.5px rgba(0, 0, 0, 0.08);
       }
     </style>
   </head>
   <body>
-    <div class="card" style="--c: #38bdf8"></div>
-    <div class="card" style="--c: #a78bfa"></div>
-    <div class="card" style="--c: #f472b6"></div>
-    <div class="card" style="--c: #fb923c"></div>
+    <div class="panel"></div>
   </body>
 </html>
