@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "../../src/index.css";
 
+/* Drive `dark:` off a class instead of the media query, so the toggle in the
+   header can override the system setting. The inline script in index.html puts
+   the class on <html> before the first paint. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Brand fonts, served from cdn.floriankiem.com (see flornkm/cdn).
    Haas Recast is licensed (Dalton Maag, Host & Link) — do not copy
    the font files into this repo. */
@@ -33,12 +38,10 @@ body {
 
 /* Invert the smooth-shadow ring hairline in dark mode: a transparent white
    edge instead of the default transparent black (which vanishes on dark
-   backgrounds). The plugin redefines --smooth-ring-color under a `.dark`
-   class; this demo uses media-query dark mode, so wire it up here. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --smooth-ring-color: rgba(255, 255, 255, 0.14);
-  }
+   backgrounds). The plugin already flips it under `.dark`; this just nudges
+   the opacity up a little for this page. */
+.dark {
+  --smooth-ring-color: rgba(255, 255, 255, 0.14);
 }
 
 h1,
