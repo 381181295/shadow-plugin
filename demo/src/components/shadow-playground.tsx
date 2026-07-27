@@ -217,7 +217,10 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
             </Segmented>
           </div>
 
-          <div className="space-y-2.5">
+          {/* Each segment carries a dot of the color it currently holds, so the
+              swatch you click visibly lands in the selected one — that is what
+              ties this control to the row underneath it. */}
+          <div className="space-y-2">
             <div className="flex justify-center">
               <Segmented>
                 {(["shadow", "ring"] as const).map((key) => (
@@ -228,7 +231,20 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
                     disabled={key === "ring" && !ring}
                     onClick={() => setTarget(key)}
                   >
-                    {key === "shadow" ? "Shadow" : "Ring"}
+                    <span className="flex items-center gap-1.5">
+                      <span
+                        className={cn(
+                          "size-2.5 rounded-full ring-1 transition-colors",
+                          key === "ring" && !ring
+                            ? "bg-transparent ring-neutral-300 dark:ring-neutral-600"
+                            : "ring-black/15 dark:ring-white/25"
+                        )}
+                        style={
+                          key === "ring" && !ring ? undefined : { backgroundColor: colors[key] }
+                        }
+                      />
+                      {key === "shadow" ? "Shadow" : "Ring"}
+                    </span>
                   </Segment>
                 ))}
               </Segmented>
