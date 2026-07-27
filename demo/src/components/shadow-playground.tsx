@@ -70,19 +70,18 @@ function tokenFor(hex: string) {
   return SWATCHES.find((swatch) => swatch.hex === hex)?.token ?? `[${hex}]`;
 }
 
-/* One row per decision: name on the left, its options on the right. Same shape
-   as the gradient-border configurator's "Stops" row, so every control on the
-   page reads on a single axis instead of three. */
-function Control({ label, children }: { label: string; children: ReactNode }) {
+/* A real segmented control rather than a row of text buttons: a sunken track
+   with one raised thumb that slides between options. The thumb is a
+   smooth-shadow-ring-xs, so the page is wearing the thing it sells. */
+function Segmented({ children }: { children: ReactNode }) {
   return (
-    <div className="flex items-center justify-between gap-3">
-      <span className="text-sm text-neutral-500">{label}</span>
-      <div className="flex items-center gap-1">{children}</div>
+    <div className="flex items-center gap-0.5 rounded-full p-0.5 bg-neutral-100 dark:bg-neutral-800">
+      {children}
     </div>
   );
 }
 
-function Option({
+function Segment({
   active,
   layoutId,
   onClick,
@@ -100,19 +99,19 @@ function Option({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        "relative text-xs px-2 py-0.5 rounded-md whitespace-nowrap transition-colors",
+        "relative rounded-full px-2.5 py-1 text-xs font-medium whitespace-nowrap transition-colors",
         disabled
-          ? "cursor-not-allowed text-neutral-300 dark:text-neutral-700"
+          ? "cursor-not-allowed text-neutral-300 dark:text-neutral-600"
           : active
-            ? "cursor-pointer text-neutral-900 dark:text-white font-medium"
-            : "cursor-pointer text-neutral-400 hover:text-neutral-500"
+            ? "cursor-pointer text-neutral-900 dark:text-white"
+            : "cursor-pointer text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200"
       )}
     >
       {active && (
         <motion.span
           layoutId={layoutId}
-          className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-md"
-          transition={{ type: "spring", duration: 0.35, bounce: 0.15 }}
+          className="absolute inset-0 rounded-full bg-white dark:bg-neutral-700 smooth-shadow-ring-xs"
+          transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
         />
       )}
       <span className="relative z-10">{children}</span>
@@ -185,70 +184,75 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
           </div>
         </div>
 
-        {/* One decision per row — size, then ring, then which of the two the
-            swatches below are tinting. */}
-        <div className="space-y-3">
-          <Control label="Size">
-            {SIZES.map((option, i) => (
-              <Option
-                key={option.label}
-                active={selected === i}
-                layoutId="size-selector"
-                onClick={() => setSelected(i)}
-              >
-                {option.label}
-              </Option>
-            ))}
-          </Control>
+        {/* Controls sit centered under the preview, in two groups: what the
+            shadow is, then what color it is. No labels — the options say it. */}
+        <div className="space-y-6">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <Segmented>
+              {SIZES.map((option, i) => (
+                <Segment
+                  key={option.label}
+                  active={selected === i}
+                  layoutId="size-selector"
+                  onClick={() => setSelected(i)}
+                >
+                  {option.label}
+                </Segment>
+              ))}
+            </Segmented>
+            <Segmented>
+              {[
+                { label: "Ring", value: true },
+                { label: "No ring", value: false },
+              ].map((option) => (
+                <Segment
+                  key={option.label}
+                  active={ring === option.value}
+                  layoutId="ring-selector"
+                  onClick={() => setRing(option.value)}
+                >
+                  {option.label}
+                </Segment>
+              ))}
+            </Segmented>
+          </div>
 
-          <Control label="Ring">
-            {[
-              { label: "on", value: true },
-              { label: "off", value: false },
-            ].map((option) => (
-              <Option
-                key={option.label}
-                active={ring === option.value}
-                layoutId="ring-selector"
-                onClick={() => setRing(option.value)}
-              >
-                {option.label}
-              </Option>
-            ))}
-          </Control>
+          <div className="space-y-2.5">
+            <div className="flex justify-center">
+              <Segmented>
+                {(["shadow", "ring"] as const).map((key) => (
+                  <Segment
+                    key={key}
+                    active={activeTarget === key}
+                    layoutId="target-selector"
+                    disabled={key === "ring" && !ring}
+                    onClick={() => setTarget(key)}
+                  >
+                    {key === "shadow" ? "Shadow" : "Ring"}
+                  </Segment>
+                ))}
+              </Segmented>
+            </div>
 
-          <Control label="Color">
-            {(["shadow", "ring"] as const).map((key) => (
-              <Option
-                key={key}
-                active={activeTarget === key}
-                layoutId="target-selector"
-                disabled={key === "ring" && !ring}
-                onClick={() => setTarget(key)}
-              >
-                {key}
-              </Option>
-            ))}
-          </Control>
-
-          <div className="flex gap-1 flex-wrap">
-            {SWATCHES.map(({ hex, token }) => (
-              <motion.button
-                key={hex}
-                aria-label={`${activeTarget} ${token}`}
-                onClick={() => setColors((prev) => ({ ...prev, [activeTarget]: hex }))}
-                className={cn(
-                  "size-5 rounded-full cursor-pointer border-[1.5px] transition-colors",
-                  colors[activeTarget] === hex
-                    ? "border-black/30 dark:border-white/50"
-                    : "border-black/5 dark:border-white/15 hover:border-black/10 dark:hover:border-white/25"
-                )}
-                style={{ backgroundColor: hex }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ type: "spring", stiffness: 500, damping: 28 }}
-              />
-            ))}
+            <div className="flex flex-wrap justify-center gap-1">
+              {SWATCHES.map(({ hex, token }) => (
+                <motion.button
+                  key={hex}
+                  aria-label={`${activeTarget} ${token}`}
+                  onClick={() => setColors((prev) => ({ ...prev, [activeTarget]: hex }))}
+                  className={cn(
+                    "size-5 rounded-full cursor-pointer border-[1.5px] transition-colors",
+                    colors[activeTarget] === hex
+                      ? "border-black/30 dark:border-white/50"
+                      : "border-black/5 dark:border-white/15 hover:border-black/10 dark:hover:border-white/25"
+                  )}
+                  style={{ backgroundColor: hex }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 28 }}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
