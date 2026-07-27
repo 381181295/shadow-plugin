@@ -9,6 +9,7 @@ export function CodeField({
   language,
   wrap = false,
   plain = false,
+  bare = false,
 }: {
   code: string;
   prefix?: string;
@@ -18,9 +19,17 @@ export function CodeField({
   /** Drop the syntax colors. For snippets that live next to a color picker,
       where a second palette in the code is one palette too many. */
   plain?: boolean;
+  /** Drop the box. For a snippet that's already a section of a bordered panel,
+      where its own edge would just double the one around it. */
+  bare?: boolean;
 }) {
   return (
-    <div className="flex items-start justify-between gap-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 px-4 py-3 overflow-hidden">
+    <div
+      className={cn(
+        "flex items-start justify-between gap-3 w-full px-4 py-3 overflow-hidden",
+        !bare && "rounded-xl border border-neutral-200 dark:border-neutral-800"
+      )}
+    >
       <div
         className={cn(
           "min-w-0 flex-1",

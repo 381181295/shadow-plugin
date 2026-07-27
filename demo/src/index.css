@@ -53,6 +53,75 @@ h6 {
   @apply -tracking-[0.0075em];
 }
 
+/* The playground's size control. The visible track, fill and thumb are real
+   elements so motion can spring them and the hover halo actually transitions —
+   `::-webkit-slider-thumb` ignores transitions in WebKit, which is why the
+   pseudo-element version sat there frozen. The native input stays on top at
+   zero opacity purely to keep dragging, keyboard and a11y for free. */
+.size-slider {
+  --slider-fill: var(--color-neutral-900);
+  --slider-track: var(--color-neutral-200);
+  --slider-halo: rgba(0, 0, 0, 0.06);
+}
+
+.dark .size-slider {
+  --slider-fill: var(--color-neutral-300);
+  --slider-track: var(--color-neutral-800);
+  --slider-halo: rgba(255, 255, 255, 0.1);
+}
+
+/* The track lifts a step on hover so the control announces itself as draggable
+   before you've touched it. */
+.size-slider:hover {
+  --slider-track: var(--color-neutral-300);
+}
+
+.dark .size-slider:hover {
+  --slider-track: var(--color-neutral-700);
+}
+
+.size-slider-thumb {
+  background: var(--color-white);
+  box-shadow:
+    0 0 4px 0 rgba(0, 0, 0, 0.04),
+    0 0 0 1px var(--smooth-ring-color),
+    0 0 0 0 var(--slider-halo);
+  transition: box-shadow 150ms ease-out;
+}
+
+.size-slider:hover .size-slider-thumb,
+.size-slider:focus-within .size-slider-thumb {
+  box-shadow:
+    0 0 4px 0 rgba(0, 0, 0, 0.04),
+    0 0 0 1px var(--smooth-ring-color),
+    0 0 0 3px var(--slider-halo);
+}
+
+/* Hide the native control entirely — it only supplies the interaction. */
+.size-slider-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: grab;
+}
+
+.size-slider-input:active {
+  cursor: grabbing;
+}
+
+.size-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+}
+
+.size-slider-input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+}
+
 .scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
