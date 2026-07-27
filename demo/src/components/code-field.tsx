@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { CopyButton } from "./copy-button";
 import { cn } from "../utils/cn";
 import { detectLanguage, highlight, type Language } from "../utils/highlight";
@@ -38,17 +37,7 @@ export function CodeField({
           )}
         >
           {prefix && <span className="text-neutral-300 dark:text-neutral-600 mr-2">{prefix}</span>}
-          {/* Keyed on the code, so a snippet driven by controls fades between
-              values instead of snapping. Static snippets never rekey, so this
-              costs them nothing. */}
-          <motion.span
-            key={code}
-            initial={{ opacity: 0, filter: "blur(2px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-          >
-            {plain ? code : highlight(code, language ?? detectLanguage(code))}
-          </motion.span>
+          {plain ? code : highlight(code, language ?? detectLanguage(code))}
         </pre>
       </div>
       <CopyButton text={code} />

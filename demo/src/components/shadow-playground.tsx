@@ -1,4 +1,4 @@
-import { motion, useAnimationControls, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { CodeField } from "./code-field";
 import { cn } from "../utils/cn";
@@ -75,7 +75,7 @@ function tokenFor(hex: string) {
    smooth-shadow-ring-xs, so the page is wearing the thing it sells. */
 function Segmented({ children }: { children: ReactNode }) {
   return (
-    <div className="flex items-center gap-0.5 rounded-full p-0.5 bg-neutral-100 dark:bg-neutral-950">
+    <div className="flex items-center gap-0.5 rounded-full p-0.5 bg-neutral-100 dark:bg-neutral-800">
       {children}
     </div>
   );
@@ -110,7 +110,7 @@ function Segment({
       {active && (
         <motion.span
           layoutId={layoutId}
-          className="absolute inset-0 rounded-full bg-white dark:bg-neutral-800 smooth-shadow-ring-xs"
+          className="absolute inset-0 rounded-full bg-white dark:bg-neutral-700 smooth-shadow-ring-xs"
           transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
         />
       )}
@@ -137,20 +137,6 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
   const activeTarget: Target = ring ? target : "shadow";
   const shadowTinted = colors.shadow !== DEFAULT_SHADOW;
 
-  /* Elevation is a physical claim, so changing it should read as the surface
-     settling into a new height rather than a cross-fade. Both previews dip and
-     spring back together whenever the size or the ring changes — slow in, slow
-     out, with the overshoot doing the follow-through. */
-  const settle = useAnimationControls();
-  const reduceMotion = useReducedMotion();
-  useEffect(() => {
-    if (reduceMotion) return;
-    settle.start({
-      scale: [0.97, 1],
-      transition: { duration: 0.45, ease: [0.34, 1.56, 0.64, 1] },
-    });
-  }, [selected, ring, settle, reduceMotion]);
-
   const size = SIZES[selected];
   const classString = [
     ring ? size.ring : size.smooth,
@@ -163,13 +149,15 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
   return (
     <div className="w-full space-y-5">
       <h2 className="font-medium leading-tight">Try it out</h2>
-      <div className="p-8 rounded-md bg-neutral-50 dark:bg-neutral-900 space-y-6">
-        <div className="flex items-center justify-center gap-8 sm:gap-16 px-4 sm:px-8 py-12 sm:py-16">
+      <div className="p-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 space-y-6">
+        {/* The stage is its own surface, raised off the card, so the demo sits
+            on something rather than floating in the same flat box as the
+            controls. */}
+        <div className="flex items-center justify-center gap-8 sm:gap-16 rounded-lg bg-white dark:bg-neutral-950 px-4 sm:px-8 py-12 sm:py-16 smooth-shadow-ring-xs">
           <div className="flex flex-col items-center gap-3">
-            <motion.div
-              animate={settle}
+            <div
               className={cn(
-                "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl shadow-black/10 dark:shadow-white/10 transition-shadow duration-500 ease-out",
+                "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl shadow-black/10 dark:shadow-white/10 transition-shadow duration-300",
                 size.tailwind
               )}
               style={
@@ -183,10 +171,9 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
             <span className="text-sm text-neutral-400">Default</span>
           </div>
           <div className="flex flex-col items-center gap-3">
-            <motion.div
-              animate={settle}
+            <div
               className={cn(
-                "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl transition-shadow duration-500 ease-out",
+                "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl transition-shadow duration-300",
                 ring ? size.ring : size.smooth
               )}
               style={
@@ -202,7 +189,7 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
 
         {/* Controls sit centered under the preview, in two groups: what the
             shadow is, then what color it is. No labels — the options say it. */}
-        <div className="space-y-6">
+        <div className="space-y-5 px-4 pb-4">
           <div className="flex flex-wrap items-center justify-center gap-2">
             <Segmented>
               {SIZES.map((option, i) => (
@@ -233,47 +220,39 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
             </Segmented>
           </div>
 
-          {/* One control, not two: the target picker and its palette share a
-              single track, so what you click and what it applies to are
-              obviously the same widget. The palette scrolls inside the track
-              when the viewport is too narrow for all of it. */}
-          <div className="flex justify-center">
-            <div className="flex max-w-full items-center gap-1.5 rounded-full p-1 bg-neutral-100 dark:bg-neutral-950">
-              <div className="flex shrink-0 items-center gap-0.5">
-                {(["shadow", "ring"] as const).map((key) => (
-                  <Segment
-                    key={key}
-                    active={activeTarget === key}
-                    layoutId="target-selector"
-                    disabled={key === "ring" && !ring}
-                    onClick={() => setTarget(key)}
-                  >
-                    {key === "shadow" ? "Shadow" : "Ring"}
-                  </Segment>
-                ))}
-              </div>
+          {/* A plain select next to the swatches: it names what they tint and
+              stays out of the way, where a second segmented control needed a
+              track of its own to hold itself together. */}
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <select
+              aria-label="Color target"
+              value={activeTarget}
+              onChange={(event) => setTarget(event.target.value as Target)}
+              disabled={!ring}
+              className="cursor-pointer bg-transparent text-xs font-medium text-neutral-900 dark:text-white disabled:cursor-not-allowed disabled:text-neutral-400"
+            >
+              <option value="shadow">Shadow</option>
+              <option value="ring">Ring</option>
+            </select>
 
-              <span className="h-4 w-px shrink-0 bg-neutral-200 dark:bg-neutral-800" />
-
-              <div className="flex items-center gap-1 overflow-x-auto scrollbar-none px-0.5">
-                {SWATCHES.map(({ hex, token }) => (
-                  <motion.button
-                    key={hex}
-                    aria-label={`${activeTarget} ${token}`}
-                    onClick={() => setColors((prev) => ({ ...prev, [activeTarget]: hex }))}
-                    className={cn(
-                      "size-4 shrink-0 rounded-full cursor-pointer border-[1.5px] transition-colors",
-                      colors[activeTarget] === hex
-                        ? "border-black/40 dark:border-white/60"
-                        : "border-black/5 dark:border-white/15 hover:border-black/20 dark:hover:border-white/30"
-                    )}
-                    style={{ backgroundColor: hex }}
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: "spring", stiffness: 500, damping: 28 }}
-                  />
-                ))}
-              </div>
+            <div className="flex flex-wrap items-center gap-1">
+              {SWATCHES.map(({ hex, token }) => (
+                <motion.button
+                  key={hex}
+                  aria-label={`${activeTarget} ${token}`}
+                  onClick={() => setColors((prev) => ({ ...prev, [activeTarget]: hex }))}
+                  className={cn(
+                    "size-5 rounded-full cursor-pointer border-[1.5px] transition-colors",
+                    colors[activeTarget] === hex
+                      ? "border-black/30 dark:border-white/50"
+                      : "border-black/5 dark:border-white/15 hover:border-black/10 dark:hover:border-white/25"
+                  )}
+                  style={{ backgroundColor: hex }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 28 }}
+                />
+              ))}
             </div>
           </div>
         </div>
