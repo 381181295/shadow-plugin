@@ -75,7 +75,7 @@ function tokenFor(hex: string) {
    smooth-shadow-ring-xs, so the page is wearing the thing it sells. */
 function Segmented({ children }: { children: ReactNode }) {
   return (
-    <div className="flex items-center gap-0.5 rounded-full p-0.5 bg-neutral-100 dark:bg-neutral-800">
+    <div className="flex items-center gap-0.5 rounded-full p-0.5 bg-neutral-100 dark:bg-neutral-950">
       {children}
     </div>
   );
@@ -110,7 +110,7 @@ function Segment({
       {active && (
         <motion.span
           layoutId={layoutId}
-          className="absolute inset-0 rounded-full bg-white dark:bg-neutral-700 smooth-shadow-ring-xs"
+          className="absolute inset-0 rounded-full bg-white dark:bg-neutral-800 smooth-shadow-ring-xs"
           transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
         />
       )}
@@ -217,12 +217,13 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
             </Segmented>
           </div>
 
-          {/* Each segment carries a dot of the color it currently holds, so the
-              swatch you click visibly lands in the selected one — that is what
-              ties this control to the row underneath it. */}
-          <div className="space-y-2">
-            <div className="flex justify-center">
-              <Segmented>
+          {/* One control, not two: the target picker and its palette share a
+              single track, so what you click and what it applies to are
+              obviously the same widget. The palette scrolls inside the track
+              when the viewport is too narrow for all of it. */}
+          <div className="flex justify-center">
+            <div className="flex max-w-full items-center gap-1.5 rounded-full p-1 bg-neutral-100 dark:bg-neutral-950">
+              <div className="flex shrink-0 items-center gap-0.5">
                 {(["shadow", "ring"] as const).map((key) => (
                   <Segment
                     key={key}
@@ -231,43 +232,32 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
                     disabled={key === "ring" && !ring}
                     onClick={() => setTarget(key)}
                   >
-                    <span className="flex items-center gap-1.5">
-                      <span
-                        className={cn(
-                          "size-2.5 rounded-full ring-1 transition-colors",
-                          key === "ring" && !ring
-                            ? "bg-transparent ring-neutral-300 dark:ring-neutral-600"
-                            : "ring-black/15 dark:ring-white/25"
-                        )}
-                        style={
-                          key === "ring" && !ring ? undefined : { backgroundColor: colors[key] }
-                        }
-                      />
-                      {key === "shadow" ? "Shadow" : "Ring"}
-                    </span>
+                    {key === "shadow" ? "Shadow" : "Ring"}
                   </Segment>
                 ))}
-              </Segmented>
-            </div>
+              </div>
 
-            <div className="flex flex-wrap justify-center gap-1">
-              {SWATCHES.map(({ hex, token }) => (
-                <motion.button
-                  key={hex}
-                  aria-label={`${activeTarget} ${token}`}
-                  onClick={() => setColors((prev) => ({ ...prev, [activeTarget]: hex }))}
-                  className={cn(
-                    "size-5 rounded-full cursor-pointer border-[1.5px] transition-colors",
-                    colors[activeTarget] === hex
-                      ? "border-black/30 dark:border-white/50"
-                      : "border-black/5 dark:border-white/15 hover:border-black/10 dark:hover:border-white/25"
-                  )}
-                  style={{ backgroundColor: hex }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ type: "spring", stiffness: 500, damping: 28 }}
-                />
-              ))}
+              <span className="h-4 w-px shrink-0 bg-neutral-200 dark:bg-neutral-800" />
+
+              <div className="flex items-center gap-1 overflow-x-auto scrollbar-none px-0.5">
+                {SWATCHES.map(({ hex, token }) => (
+                  <motion.button
+                    key={hex}
+                    aria-label={`${activeTarget} ${token}`}
+                    onClick={() => setColors((prev) => ({ ...prev, [activeTarget]: hex }))}
+                    className={cn(
+                      "size-4 shrink-0 rounded-full cursor-pointer border-[1.5px] transition-colors",
+                      colors[activeTarget] === hex
+                        ? "border-black/40 dark:border-white/60"
+                        : "border-black/5 dark:border-white/15 hover:border-black/20 dark:hover:border-white/30"
+                    )}
+                    style={{ backgroundColor: hex }}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 28 }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
