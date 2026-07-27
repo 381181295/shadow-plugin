@@ -1,61 +1,14 @@
+import {
+  IconDevices,
+  IconMoon,
+  IconSun,
+} from "@central-icons-react/round-outlined-radius-1-stroke-2";
 import { motion } from "motion/react";
 import { cn } from "../utils/cn";
 import type { Theme } from "../utils/theme";
 
-function IconSun({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.75}
-      strokeLinecap="round"
-      aria-hidden
-      className={className}
-    >
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4" />
-    </svg>
-  );
-}
-
-function IconMoon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.75}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      className={className}
-    >
-      <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4 8.2 8.2 0 1 0 20 14.2Z" />
-    </svg>
-  );
-}
-
-function IconSystem({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.75}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      className={className}
-    >
-      <rect x="2.75" y="4.25" width="18.5" height="12.5" rx="2.25" />
-      <path d="M8.5 20.25h7" />
-    </svg>
-  );
-}
-
 const OPTIONS: { value: Theme; label: string; Icon: typeof IconSun }[] = [
-  { value: "system", label: "System theme", Icon: IconSystem },
+  { value: "system", label: "System theme", Icon: IconDevices },
   { value: "light", label: "Light theme", Icon: IconSun },
   { value: "dark", label: "Dark theme", Icon: IconMoon },
 ];
@@ -95,7 +48,7 @@ export function ThemeToggle({
               transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
             />
           )}
-          <Icon className="relative z-10 size-3.5" />
+          <Icon size={14} className="relative z-10" />
         </button>
       ))}
     </div>

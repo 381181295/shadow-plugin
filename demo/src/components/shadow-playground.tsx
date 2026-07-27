@@ -12,15 +12,18 @@ const SIZES = [
   { label: "XL", smooth: "smooth-shadow-xl", ring: "smooth-shadow-ring-xl", tailwind: "shadow-xl" },
 ];
 
-/* Same swatch set as the gradient-border plugin demo, so the two pages feel
-   like one family. Every hex maps to a real Tailwind token, which is what the
-   generated class string below the preview quotes. */
+/* The gradient-border plugin demo's palette, same swatches in the same order,
+   so the two pages feel like one family. Every hex maps to a real Tailwind
+   token, which is what the generated class string below the preview quotes. */
 const SWATCHES: { hex: string; token: string }[] = [
   { hex: "#ffffff", token: "white" },
+  { hex: "#fafafa", token: "neutral-50" },
   { hex: "#d4d4d4", token: "neutral-300" },
   { hex: "#a3a3a3", token: "neutral-400" },
   { hex: "#525252", token: "neutral-600" },
+  { hex: "#404040", token: "neutral-700" },
   { hex: "#262626", token: "neutral-800" },
+  { hex: "#171717", token: "neutral-900" },
   { hex: "#000000", token: "black" },
   { hex: "#38bdf8", token: "sky-400" },
   { hex: "#60a5fa", token: "blue-400" },
@@ -50,8 +53,14 @@ const DEFAULT_SHADOW_ALPHA = 10;
 type Target = "shadow" | "ring";
 type Colors = Record<Target, string>;
 
-const LIGHT_DEFAULTS: Colors = { shadow: "#000000", ring: "#d4d4d4" };
-const DARK_DEFAULTS: Colors = { shadow: "#ffffff", ring: "#525252" };
+/* The shadow stays black in both themes — that's the plugin's own default, and
+   a white shadow on a dark ground reads as a glow around the box rather than a
+   shadow under it. Only the ring flips, since a black hairline disappears
+   there. Until the shadow is actually tinted we set no color at all, so both
+   previews render exactly what the page shipped with. */
+const DEFAULT_SHADOW = "#000000";
+const LIGHT_DEFAULTS: Colors = { shadow: DEFAULT_SHADOW, ring: "#d4d4d4" };
+const DARK_DEFAULTS: Colors = { shadow: DEFAULT_SHADOW, ring: "#525252" };
 
 function mix(hex: string, alpha: number) {
   return `color-mix(in srgb, ${hex} ${alpha}%, transparent)`;
@@ -65,26 +74,19 @@ function Pill({
   active,
   layoutId,
   onClick,
-  disabled,
   children,
 }: {
   active: boolean;
   layoutId: string;
   onClick: () => void;
-  disabled?: boolean;
   children: ReactNode;
 }) {
   return (
     <button
       onClick={onClick}
-      disabled={disabled}
       className={cn(
-        "relative px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-colors",
-        disabled
-          ? "cursor-not-allowed text-neutral-300 dark:text-neutral-700"
-          : active
-            ? "cursor-pointer text-neutral-900 dark:text-white"
-            : "cursor-pointer text-neutral-400 hover:text-neutral-500"
+        "relative px-3 py-1 cursor-pointer rounded-full text-xs font-medium whitespace-nowrap transition-colors",
+        active ? "text-neutral-900 dark:text-white" : "text-neutral-400 hover:text-neutral-500"
       )}
     >
       {active && (
@@ -107,14 +109,15 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
     theme === "dark" ? DARK_DEFAULTS : LIGHT_DEFAULTS
   );
 
-  // A black shadow is invisible on black, so follow the theme back to sensible
-  // defaults whenever it flips.
+  // A black hairline is invisible on black, so follow the theme back to
+  // sensible defaults whenever it flips.
   useEffect(() => {
     setColors(theme === "dark" ? DARK_DEFAULTS : LIGHT_DEFAULTS);
   }, [theme]);
 
   // `smooth-ring-*` does nothing without a ring, so don't offer it as a target.
   const activeTarget: Target = ring ? target : "shadow";
+  const shadowTinted = colors.shadow !== DEFAULT_SHADOW;
 
   const size = SIZES[selected];
   const classString = [
@@ -133,13 +136,15 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
           <div className="flex flex-col items-center gap-3">
             <div
               className={cn(
-                "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl transition-shadow duration-300",
+                "size-24 sm:size-32 bg-white dark:bg-neutral-800 rounded-2xl shadow-black/10 dark:shadow-white/10 transition-shadow duration-300",
                 size.tailwind
               )}
               style={
-                {
-                  "--tw-shadow-color": mix(colors.shadow, DEFAULT_SHADOW_ALPHA),
-                } as CSSProperties
+                shadowTinted
+                  ? ({
+                      "--tw-shadow-color": mix(colors.shadow, DEFAULT_SHADOW_ALPHA),
+                    } as CSSProperties)
+                  : undefined
               }
             />
             <span className="text-sm text-neutral-400">Default</span>
@@ -152,7 +157,7 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
               )}
               style={
                 {
-                  "--tw-shadow-color": colors.shadow,
+                  ...(shadowTinted ? { "--tw-shadow-color": colors.shadow } : {}),
                   ...(ring ? { "--smooth-ring-color": mix(colors.ring, RING_ALPHA) } : {}),
                 } as CSSProperties
               }
@@ -174,7 +179,7 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
               </Pill>
             ))}
           </div>
-          <span className="hidden sm:block w-px h-4 mx-1.5 bg-neutral-200 dark:bg-neutral-700" />
+          <span className="hidden sm:block shrink-0 w-px h-4 mx-1.5 bg-neutral-200 dark:bg-neutral-700" />
           <div className="flex items-center gap-1">
             {[
               { label: "Ring", value: true },
@@ -194,25 +199,39 @@ export function ShadowPlayground({ theme }: { theme: ResolvedTheme }) {
 
         <div className="h-px bg-neutral-200/70 dark:bg-neutral-800" />
 
-        {/* Color — the ring and the shadow tint independently, so pick a target first */}
+        {/* Color — the ring and the shadow tint independently, so pick a target first.
+            Same selector and swatch grid as the gradient-border plugin demo. */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-neutral-500 dark:text-neutral-400">Color</span>
+            <span className="text-sm text-neutral-500">Color</span>
             <div className="flex items-center gap-1">
-              {(["shadow", "ring"] as const).map((option) => (
-                <Pill
-                  key={option}
-                  active={activeTarget === option}
-                  layoutId="target-selector"
-                  disabled={option === "ring" && !ring}
-                  onClick={() => setTarget(option)}
+              {(["shadow", "ring"] as const).map((key) => (
+                <button
+                  key={key}
+                  onClick={() => setTarget(key)}
+                  disabled={key === "ring" && !ring}
+                  className={cn(
+                    "relative text-xs px-2 py-0.5 rounded-md transition-colors",
+                    key === "ring" && !ring
+                      ? "cursor-not-allowed text-neutral-300 dark:text-neutral-700"
+                      : activeTarget === key
+                        ? "cursor-pointer text-neutral-900 dark:text-white font-medium"
+                        : "cursor-pointer text-neutral-400 hover:text-neutral-500"
+                  )}
                 >
-                  {option === "shadow" ? "Shadow" : "Ring"}
-                </Pill>
+                  {activeTarget === key && (
+                    <motion.span
+                      layoutId="target-bg"
+                      className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-md"
+                      transition={{ type: "spring", duration: 0.35, bounce: 0.15 }}
+                    />
+                  )}
+                  <span className="relative z-10">{key}</span>
+                </button>
               ))}
             </div>
           </div>
-          <div className="flex flex-wrap gap-1">
+          <div className="flex gap-1 flex-wrap">
             {SWATCHES.map(({ hex, token }) => (
               <motion.button
                 key={hex}
