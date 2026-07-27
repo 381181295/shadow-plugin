@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Smooth Shadow Plugin — Open Graph</title>
+    <!--
+      Source for demo/public/images/og.webp. Rendered headless at exactly
+      1200x630 by ./render.sh — edit here, re-run that, never touch the .webp.
+
+      Deliberately text-free: no fonts to load, so the export is identical on
+      any machine and can never fall back to a wrong typeface.
+
+      Every shadow below is copied verbatim from src/shadows.css and
+      src/shadow-ring.css. `shadow-xl` is Tailwind's own, for the comparison.
+    -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 1200px;
+        height: 630px;
+        background: #fafafa;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 78px;
+      }
+
+      .col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .badge {
+        width: 84px;
+        height: 84px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* The inset hairline the demo's swatches wear, seating the fill. */
+        box-shadow: inset 0 0 0 2.5px rgba(0, 0, 0, 0.1);
+      }
+      .badge.bad {
+        background: #ea580c;
+      }
+      .badge.good {
+        background: #16a34a;
+      }
+      .badge svg {
+        display: block;
+      }
+
+      /* Grey ground so the white card separates and the falloff has something
+         to land on — on #fafafa the corner floated. Kept light enough that a
+         6%-black shadow still reads against it. */
+      .win {
+        position: relative;
+        width: 452px;
+        height: 300px;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #efefef;
+      }
+
+      /* An oversized card cropped to its BOTTOM-left corner. Every shadow here
+         has a positive Y offset, so it pools below the card — framing the top
+         corner showed the edge with no shadow under it and the two sides came
+         out looking identical. */
+      .card {
+        position: absolute;
+        left: 132px;
+        top: -384px;
+        width: 900px;
+        height: 600px;
+        border-radius: 60px;
+        background: #fff;
+      }
+
+      /* Both edges are thickened to 3px. This is a ~4x corner crop, so scaling
+         the 1px edge up with everything else is truer than leaving it hairline
+         — and it is the one thing the image asks you to look at. */
+      /* `border-neutral-300` is #d4d4d4; this is a touch darker so the line
+         still reads once webp and a feed thumbnail have had their way with it.
+         The width is already scaled 3x for the crop, so the colour follows. */
+      .card.bad {
+        border: 3px solid #c9c9c9;
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      }
+
+      .card.good {
+        box-shadow:
+          0 40px 80px 0 rgba(0, 0, 0, 0.06),
+          0 20px 40px 0 rgba(0, 0, 0, 0.05),
+          0 10px 20px 0 rgba(0, 0, 0, 0.04),
+          0 5px 10px 0 rgba(0, 0, 0, 0.03),
+          0 2px 4px 0 rgba(0, 0, 0, 0.02),
+          0 0 0 3px rgba(0, 0, 0, 0.06);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="col">
+      <div class="badge bad">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round">
+          <path d="M6 6 L18 18 M18 6 L6 18" />
+        </svg>
+      </div>
+      <div class="win"><div class="card bad"></div></div>
+    </div>
+
+    <div class="col">
+      <div class="badge good">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4.5 12.5 L9.5 17.5 L19.5 6.5" />
+        </svg>
+      </div>
+      <div class="win"><div class="card good"></div></div>
+    </div>
+  </body>
+</html>
