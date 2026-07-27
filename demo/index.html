@@ -14,9 +14,10 @@
             (stored !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
           document.documentElement.classList.toggle("dark", dark);
           document.documentElement.style.colorScheme = dark ? "dark" : "light";
-          document.querySelector("link[rel='icon']").href = dark
-            ? "/favicon-dark.svg"
-            : "/favicon-light.svg";
+          var favicon = document.querySelector("link[rel='icon']");
+          if (favicon) favicon.href = dark ? "/favicon-dark.svg" : "/favicon-light.svg";
+          var themeColor = document.querySelector("meta[name='theme-color']");
+          if (themeColor) themeColor.content = dark ? "#000000" : "#ffffff";
         } catch (e) {}
       })();
     </script>

@@ -22,11 +22,14 @@ function resolveTheme(theme: Theme): ResolvedTheme {
 /* Mirrors the inline script in index.html, which paints the first frame before
    React boots so there is no light-mode flash on a dark-mode reload. */
 function applyTheme(resolved: ResolvedTheme) {
+  const dark = resolved === "dark";
   const root = document.documentElement;
-  root.classList.toggle("dark", resolved === "dark");
+  root.classList.toggle("dark", dark);
   root.style.colorScheme = resolved;
   const favicon = document.querySelector<HTMLLinkElement>("link[rel='icon']");
-  if (favicon) favicon.href = resolved === "dark" ? "/favicon-dark.svg" : "/favicon-light.svg";
+  if (favicon) favicon.href = dark ? "/favicon-dark.svg" : "/favicon-light.svg";
+  const themeColor = document.querySelector<HTMLMetaElement>("meta[name='theme-color']");
+  if (themeColor) themeColor.content = dark ? "#000000" : "#ffffff";
 }
 
 export function useTheme() {

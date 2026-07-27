@@ -1,8 +1,6 @@
-import {
-  IconDevices,
-  IconMoon,
-  IconSun,
-} from "@central-icons-react/round-outlined-radius-1-stroke-2";
+import { IconDevices } from "@central-icons-react/round-outlined-radius-1-stroke-2/IconDevices";
+import { IconMoon } from "@central-icons-react/round-outlined-radius-1-stroke-2/IconMoon";
+import { IconSun } from "@central-icons-react/round-outlined-radius-1-stroke-2/IconSun";
 import { motion } from "motion/react";
 import { cn } from "../utils/cn";
 import type { Theme } from "../utils/theme";
