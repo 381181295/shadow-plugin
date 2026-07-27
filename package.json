@@ -22,6 +22,10 @@
     "tailwindcss"
   ],
   "repository": "flornkm/shadow-plugin",
+  "homepage": "https://shadow.floriankiem.com",
+  "bugs": {
+    "url": "https://github.com/flornkm/shadow-plugin/issues"
+  },
   "author": {
     "name": "flornkm",
     "website": "https://floriankiem.com"

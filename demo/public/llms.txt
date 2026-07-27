@@ -1,6 +1,6 @@
 # TailwindCSS Smooth Shadow Plugin
 
-Soft, multi-layered shadows that extend Tailwind’s shadow scale. Utilities include `smooth-shadow` plus sizes from `smooth-shadow-xs` up to `smooth-shadow-2xl`. Color tokens like `smooth-shadow-red-500` are supported, or rely on `currentColor`.
+Soft, multi-layered shadows that extend Tailwind’s shadow scale. Utilities include `smooth-shadow` plus sizes from `smooth-shadow-xs` up to `smooth-shadow-2xl`, and `smooth-shadow-none`. There is no `smooth-shadow-{color}` utility — tint the shadow with Tailwind’s own `shadow-{color}` (e.g. `smooth-shadow-md shadow-blue-500/50`), which the plugin reads via `--tw-shadow-color`. Untinted, it falls back to black.
 
 ## About
 
@@ -20,7 +20,9 @@ For elevated surfaces like cards, dialogs, popovers, dropdowns and menus, the `s
 
 ## Project
 
+- Site (interactive playground): https://shadow.floriankiem.com
 - Repository: https://github.com/flornkm/shadow-plugin
+- Package: https://www.npmjs.com/package/shadow-plugin
 
 ## Optional
 

@@ -4,6 +4,8 @@
 
 A simple Tailwind plugin that makes your shadows finally look good.
 
+**[shadow.floriankiem.com](https://shadow.floriankiem.com)** — try every size, ring and color in the browser and copy the class.
+
 ## Install
 
 ```bash
@@ -93,4 +95,4 @@ To stop AI tools from pairing a `border` with a `shadow` (the double edge) and r
 
 MIT
 
-Created by [Nils Eller](https://x.com/nilseller), [Eduard Wieandt](https://x.com/eduardwieandt), and [Florian Kiem](https://x.com/flornkm).
+Created by [Nils Eller](https://x.com/nilseller), [Eduard Wieandt](https://x.com/eduardwieandt), and [Florian Kiem](https://x.com/flornkm), in collaboration with [Rogo](https://rogo.ai/).

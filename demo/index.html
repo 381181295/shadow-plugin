@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" />
+    <!-- Declared above the script on purpose: that script rewrites this tag's
+         content, and querySelector only finds it if it has already been parsed. -->
+    <meta name="theme-color" content="#ffffff" />
     <script>
       // Paint the stored theme before the first frame, so a dark-mode reload
       // never flashes white. Kept in sync with src/utils/theme.ts.
@@ -25,15 +28,24 @@
     <link rel="preconnect" href="https://cdn.floriankiem.com" crossorigin />
     <title>Smooth Shadow Plugin for Tailwind CSS</title>
     <meta name="description" content="Tailwind plugin for soft multi-layer shadows." />
+    <link rel="canonical" href="https://shadow.floriankiem.com/" />
+    <meta property="og:site_name" content="Smooth Shadow Plugin" />
     <meta property="og:title" content="Smooth Shadow Plugin" />
     <meta
       property="og:description"
       content="A simple Tailwind plugin that makes your shadows finally look good."
     />
     <meta property="og:url" content="https://shadow.floriankiem.com/" />
+    <meta property="og:image" content="https://shadow.floriankiem.com/images/og.webp" />
+    <!-- Dimensions let an unfurler lay the card out without fetching the image
+         first, which is the difference between a preview appearing instantly
+         and appearing a beat late. -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/webp" />
     <meta
-      property="og:image"
-      content="https://shadow.floriankiem.com/images/og.webp"
+      property="og:image:alt"
+      content="A card corner at 4x zoom, twice: a grey border sitting beside its shadow, and the same corner with the hairline dissolved into the shadow."
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -42,9 +54,10 @@
       name="twitter:description"
       content="A simple Tailwind plugin that makes your shadows finally look good."
     />
+    <meta name="twitter:image" content="https://shadow.floriankiem.com/images/og.webp" />
     <meta
-      name="twitter:image"
-      content="https://shadow.floriankiem.com/images/og.webp"
+      name="twitter:image:alt"
+      content="A card corner at 4x zoom, twice: a grey border sitting beside its shadow, and the same corner with the hairline dissolved into the shadow."
     />
   </head>
 
