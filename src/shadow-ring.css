@@ -18,16 +18,23 @@
  */
 
 /*
- * Default hairline the ring layer reads. Redefined under `.dark` so it stays
- * visible on dark backgrounds (a black hairline disappears there). Sites using
- * media-query dark mode can redefine it themselves:
- * `@media (prefers-color-scheme: dark) { :root { --smooth-ring-color: rgba(255, 255, 255, 0.06); } }`
+ * Default hairline the ring layer reads. A black hairline disappears on dark
+ * backgrounds, so dark mode flips it to a white one out of the box — for
+ * media-query dark, class dark (`.dark`), and `data-theme="dark"` alike.
+ * Sites can still override `--smooth-ring-color` at any scope.
  */
 :root {
   --smooth-ring-color: rgba(0, 0, 0, 0.05);
 }
 
-.dark {
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not([data-theme='light']) {
+    --smooth-ring-color: rgba(255, 255, 255, 0.06);
+  }
+}
+
+.dark,
+[data-theme='dark'] {
   --smooth-ring-color: rgba(255, 255, 255, 0.06);
 }
 
