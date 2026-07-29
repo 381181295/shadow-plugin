@@ -1,3 +1,9 @@
+## [1.2.2](https://github.com/flornkm/shadow-plugin/compare/v1.2.1...v1.2.2) (2026-07-29)
+
+### Bug Fixes
+
+* white hairline ring in dark mode by default (media query, .dark, data-theme) ([77c5ec2](https://github.com/flornkm/shadow-plugin/commit/77c5ec2562ed82c91e79aa6d015ab824d5c9641a))
+
 ## [1.2.1](https://github.com/flornkm/shadow-plugin/compare/v1.2.0...v1.2.1) (2026-07-14)
 
 ### Bug Fixes
