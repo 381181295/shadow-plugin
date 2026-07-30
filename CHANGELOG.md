@@ -1,3 +1,9 @@
+## [1.2.4](https://github.com/flornkm/shadow-plugin/compare/v1.2.3...v1.2.4) (2026-07-30)
+
+### Bug Fixes
+
+* ease the dark ring alpha back to 0.18 ([609d076](https://github.com/flornkm/shadow-plugin/commit/609d0761d04960723925fefb2de86a37dffdd9f1))
+
 ## [1.2.3](https://github.com/flornkm/shadow-plugin/compare/v1.2.2...v1.2.3) (2026-07-30)
 
 ### Bug Fixes
