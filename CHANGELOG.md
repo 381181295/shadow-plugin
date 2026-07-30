@@ -1,3 +1,9 @@
+## [1.2.3](https://github.com/flornkm/shadow-plugin/compare/v1.2.2...v1.2.3) (2026-07-30)
+
+### Bug Fixes
+
+* readable dark ring and a 2xl that belongs on the ramp ([0e03ead](https://github.com/flornkm/shadow-plugin/commit/0e03ead16b7af6e21cf9819cc166d9e092e12d8f))
+
 ## [1.2.2](https://github.com/flornkm/shadow-plugin/compare/v1.2.1...v1.2.2) (2026-07-29)
 
 ### Bug Fixes
