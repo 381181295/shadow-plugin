@@ -47,7 +47,7 @@ The ring and the shadow are colored independently. `shadow-{color}` tints the sh
 <div class="smooth-shadow-ring-md smooth-ring-blue-500/40 shadow-blue-500" />
 ```
 
-The ring defaults to `rgba(0, 0, 0, 0.05)` and flips to `rgba(255, 255, 255, 0.2)` in dark mode. That happens automatically under `prefers-color-scheme: dark`, a `.dark` class, or `data-theme="dark"` — no setup either way.
+The ring defaults to `rgba(0, 0, 0, 0.05)` and flips to `rgba(255, 255, 255, 0.18)` in dark mode. That happens automatically under `prefers-color-scheme: dark`, a `.dark` class, or `data-theme="dark"` — no setup either way.
 
 The dark alpha is deliberately much higher than the light one. The ring is an outer layer, so it paints on the page *behind* the surface and takes its rendered colour from the page background rather than from the surface it outlines. In light mode that is forgiving, because a black hairline darkens away from any near-white surface. In dark mode a white hairline lightens *toward* a raised surface, so too low an alpha lands the ring on the surface's own colour and the edge vanishes.
 

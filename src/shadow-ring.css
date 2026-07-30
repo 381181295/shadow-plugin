@@ -31,10 +31,11 @@
  * ring on the surface's own colour and the edge vanishes (white 6% over a
  * neutral-900 page renders rgb(37,37,37) — a neutral-800 card is rgb(38,38,38)).
  *
- * 20% is the point where the worst realistic pairing (a neutral-800 surface on
- * a pure-black page) still leaves a ~13/255 edge, which is exactly the edge
- * black 5% gives on white. So both themes carry the same minimum hairline
- * weight. Very light surfaces (neutral-700 and up) on a dark page can still sit
+ * 18% keeps the hairline quiet while still clearing that trap: the worst
+ * realistic pairing (a neutral-800 surface on a pure-black page) holds an
+ * ~8/255 edge, and the common ones sit well above it. Below this it drops off
+ * fast — 16% leaves only ~3/255 in that same case, which reads as no edge at
+ * all. Very light surfaces (neutral-700 and up) on a dark page can still sit
  * near the ring — set `smooth-ring-*` explicitly there.
  */
 :root {
@@ -43,13 +44,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light):not([data-theme='light']) {
-    --smooth-ring-color: rgba(255, 255, 255, 0.2);
+    --smooth-ring-color: rgba(255, 255, 255, 0.18);
   }
 }
 
 .dark,
 [data-theme='dark'] {
-  --smooth-ring-color: rgba(255, 255, 255, 0.2);
+  --smooth-ring-color: rgba(255, 255, 255, 0.18);
 }
 
 @utility smooth-shadow-ring {

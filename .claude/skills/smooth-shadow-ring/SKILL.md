@@ -39,7 +39,7 @@ The ring and shadow tint independently and compose on the same element:
 - `shadow-{color}` tints the shadow, e.g. `shadow-blue-500`
 - `smooth-ring-{color}` tints the ring, e.g. `smooth-ring-black/10`, `smooth-ring-blue-500/40`
 
-The ring defaults to `rgba(0,0,0,0.05)` and flips to `rgba(255,255,255,0.2)`
+The ring defaults to `rgba(0,0,0,0.05)` and flips to `rgba(255,255,255,0.18)`
 in dark mode — under `prefers-color-scheme`, a `.dark` class, or
 `data-theme="dark"` alike.
 
