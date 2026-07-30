@@ -22,6 +22,20 @@
  * backgrounds, so dark mode flips it to a white one out of the box — for
  * media-query dark, class dark (`.dark`), and `data-theme="dark"` alike.
  * Sites can still override `--smooth-ring-color` at any scope.
+ *
+ * On the alphas: the ring is an OUTER layer, so it paints on the page behind
+ * the surface, and its rendered colour is therefore set by the page background
+ * rather than by the surface it outlines. In light mode that is forgiving — a
+ * black hairline darkens away from any near-white surface. In dark mode a white
+ * hairline lightens *toward* a raised surface, so too low an alpha lands the
+ * ring on the surface's own colour and the edge vanishes (white 6% over a
+ * neutral-900 page renders rgb(37,37,37) — a neutral-800 card is rgb(38,38,38)).
+ *
+ * 20% is the point where the worst realistic pairing (a neutral-800 surface on
+ * a pure-black page) still leaves a ~13/255 edge, which is exactly the edge
+ * black 5% gives on white. So both themes carry the same minimum hairline
+ * weight. Very light surfaces (neutral-700 and up) on a dark page can still sit
+ * near the ring — set `smooth-ring-*` explicitly there.
  */
 :root {
   --smooth-ring-color: rgba(0, 0, 0, 0.05);
@@ -29,13 +43,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light):not([data-theme='light']) {
-    --smooth-ring-color: rgba(255, 255, 255, 0.06);
+    --smooth-ring-color: rgba(255, 255, 255, 0.2);
   }
 }
 
 .dark,
 [data-theme='dark'] {
-  --smooth-ring-color: rgba(255, 255, 255, 0.06);
+  --smooth-ring-color: rgba(255, 255, 255, 0.2);
 }
 
 @utility smooth-shadow-ring {
@@ -97,12 +111,11 @@
 
 @utility smooth-shadow-ring-2xl {
   --smooth-shadow-color: var(--tw-shadow-color, black);
-  box-shadow: 0 9px 14px 0 color-mix(in srgb, var(--smooth-shadow-color) 7%, transparent),
-    0 22px 33px 0 color-mix(in srgb, var(--smooth-shadow-color) 10%, transparent),
-    0 40px 63px 0 color-mix(in srgb, var(--smooth-shadow-color) 13%, transparent),
-    0 73px 111px 0 color-mix(in srgb, var(--smooth-shadow-color) 15%, transparent),
-    0 136px 208px 0 color-mix(in srgb, var(--smooth-shadow-color) 18%, transparent),
-    0 326px 250px 0 color-mix(in srgb, var(--smooth-shadow-color) 25%, transparent),
+  box-shadow: 0 60px 120px 0 color-mix(in srgb, var(--smooth-shadow-color) 7%, transparent),
+    0 30px 60px 0 color-mix(in srgb, var(--smooth-shadow-color) 6%, transparent),
+    0 15px 30px 0 color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent),
+    0 7.5px 15px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
+    0 3px 6px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
     0 0 0 1px var(--smooth-ring-color) !important;
 }
 

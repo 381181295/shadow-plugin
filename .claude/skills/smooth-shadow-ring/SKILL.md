@@ -39,8 +39,16 @@ The ring and shadow tint independently and compose on the same element:
 - `shadow-{color}` tints the shadow, e.g. `shadow-blue-500`
 - `smooth-ring-{color}` tints the ring, e.g. `smooth-ring-black/10`, `smooth-ring-blue-500/40`
 
-The ring defaults to `rgba(0,0,0,0.05)` and flips to `rgba(255,255,255,0.06)`
-under a `.dark` class.
+The ring defaults to `rgba(0,0,0,0.05)` and flips to `rgba(255,255,255,0.2)`
+in dark mode — under `prefers-color-scheme`, a `.dark` class, or
+`data-theme="dark"` alike.
+
+The dark alpha is much higher than the light one on purpose. The ring paints
+outside the surface, so its rendered colour comes from the page behind it, not
+from the surface it outlines. A white hairline therefore lightens *toward* a
+raised dark surface, and too low an alpha makes the edge land on the surface's
+own colour and disappear. If a surface is light enough to sit near the ring
+anyway (`neutral-700` and up on a dark page), set `smooth-ring-*` explicitly.
 
 ## Example
 

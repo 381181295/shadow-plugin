@@ -22,9 +22,9 @@
   --smooth-shadow-xl: 0 40px 80px 0 rgba(0, 0, 0, 0.06), 0 20px 40px 0 rgba(0, 0, 0, 0.05),
     0 10px 20px 0 rgba(0, 0, 0, 0.04), 0 5px 10px 0 rgba(0, 0, 0, 0.03),
     0 2px 4px 0 rgba(0, 0, 0, 0.02);
-  --smooth-shadow-2xl: 0 9px 14px 0 rgba(0, 0, 0, 0.07), 0 22px 33px 0 rgba(0, 0, 0, 0.1),
-    0 40px 63px 0 rgba(0, 0, 0, 0.13), 0 73px 111px 0 rgba(0, 0, 0, 0.15),
-    0 136px 208px 0 rgba(0, 0, 0, 0.18), 0 326px 250px 0 rgba(0, 0, 0, 0.25);
+  --smooth-shadow-2xl: 0 60px 120px 0 rgba(0, 0, 0, 0.07), 0 30px 60px 0 rgba(0, 0, 0, 0.06),
+    0 15px 30px 0 rgba(0, 0, 0, 0.05), 0 7.5px 15px 0 rgba(0, 0, 0, 0.04),
+    0 3px 6px 0 rgba(0, 0, 0, 0.03);
 }
 
 @utility smooth-shadow {
@@ -80,12 +80,11 @@
 
 @utility smooth-shadow-2xl {
   --smooth-shadow-color: var(--tw-shadow-color, black);
-  box-shadow: 0 9px 14px 0 color-mix(in srgb, var(--smooth-shadow-color) 7%, transparent),
-    0 22px 33px 0 color-mix(in srgb, var(--smooth-shadow-color) 10%, transparent),
-    0 40px 63px 0 color-mix(in srgb, var(--smooth-shadow-color) 13%, transparent),
-    0 73px 111px 0 color-mix(in srgb, var(--smooth-shadow-color) 15%, transparent),
-    0 136px 208px 0 color-mix(in srgb, var(--smooth-shadow-color) 18%, transparent),
-    0 326px 250px 0 color-mix(in srgb, var(--smooth-shadow-color) 25%, transparent) !important;
+  box-shadow: 0 60px 120px 0 color-mix(in srgb, var(--smooth-shadow-color) 7%, transparent),
+    0 30px 60px 0 color-mix(in srgb, var(--smooth-shadow-color) 6%, transparent),
+    0 15px 30px 0 color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent),
+    0 7.5px 15px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
+    0 3px 6px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent) !important;
 }
 
 @utility smooth-shadow-none {
