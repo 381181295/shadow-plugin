@@ -1,3 +1,9 @@
+## [1.2.5](https://github.com/flornkm/shadow-plugin/compare/v1.2.4...v1.2.5) (2026-07-31)
+
+### Bug Fixes
+
+* leading ([7d69136](https://github.com/flornkm/shadow-plugin/commit/7d69136e791c04dd9ce6bdd20e3af50e670ea790))
+
 ## [1.2.4](https://github.com/flornkm/shadow-plugin/compare/v1.2.3...v1.2.4) (2026-07-30)
 
 ### Bug Fixes
