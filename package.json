@@ -7,10 +7,10 @@
     "format": "prettier --write --ignore-unknown .",
     "demo": "open demo/index.html"
   },
-  "exports": "./src/index.css",
-  "main": "./src/index.css",
+  "exports": "./dist/shadow-plugin.css",
+  "main": "./dist/shadow-plugin.css",
   "files": [
-    "src"
+    "dist"
   ],
   "keywords": [
     "shadow",
