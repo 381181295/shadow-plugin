@@ -33,8 +33,8 @@ function App() {
       <div className="w-full max-w-3xl flex space-y-12 flex-col items-start mx-auto">
         <div className="w-full flex items-start justify-between gap-4">
           <div className="space-y-2">
-            <h1 className="text-base font-medium leading-tight">Smooth Shadow Plugin</h1>
-            <p className="text-sm mb-1.5 leading-tight text-neutral-400">
+            <h1 className="text-base font-medium">Smooth Shadow Plugin</h1>
+            <p className="text-sm mb-1.5 text-neutral-400">
               A simple tailwind plugin that makes your shadows finally look good.
             </p>
           </div>
@@ -46,7 +46,7 @@ function App() {
 
         {/* Install */}
         <div className="w-full space-y-3">
-          <h2 className="font-medium leading-tight">Install</h2>
+          <h2 className="font-medium">Install</h2>
           <div className="flex items-center gap-3">
             {INSTALL_COMMANDS.map((p, i) => (
               <button
@@ -68,23 +68,23 @@ function App() {
 
         {/* Usage */}
         <div className="w-full space-y-6">
-          <h2 className="font-medium leading-tight">Usage</h2>
+          <h2 className="font-medium">Usage</h2>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">Tailwind stylesheet</h3>
+            <h3 className="text-sm mb-1.5 text-neutral-400">Tailwind stylesheet</h3>
             <CodeField code="@import 'shadow-plugin';" language="css" />
           </div>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">Element classes</h3>
+            <h3 className="text-sm mb-1.5 text-neutral-400">Element classes</h3>
             <CodeField code="<div className='smooth-shadow-md' />" language="html" />
           </div>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">
+            <h3 className="text-sm mb-1.5 text-neutral-400">
               Shadow + ring for elevated surfaces
             </h3>
             <CodeField code="<div className='smooth-shadow-ring-md' />" language="html" />
           </div>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">
+            <h3 className="text-sm mb-1.5 text-neutral-400">
               Adjust ring and shadow color independently
             </h3>
             <CodeField
@@ -93,7 +93,7 @@ function App() {
             />
           </div>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-400">
+            <h3 className="text-sm mb-1.5 text-neutral-400">
               Optional: Replace all your default shadows
             </h3>
             <CodeField
@@ -109,8 +109,8 @@ function App() {
         {/* Agent skills */}
         <div className="w-full space-y-8">
           <div className="space-y-2">
-            <h2 className="font-medium leading-tight">Agent skills</h2>
-            <p className="text-sm leading-tight text-neutral-400">
+            <h2 className="font-medium">Agent skills</h2>
+            <p className="text-sm text-neutral-400">
               Drop these into your AI tools so they stop pairing a{" "}
               <code className="font-mono text-neutral-500 dark:text-neutral-400">border</code> with
               a <code className="font-mono text-neutral-500 dark:text-neutral-400">shadow</code>{" "}
@@ -122,7 +122,7 @@ function App() {
             </p>
           </div>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-900 dark:text-white">
+            <h3 className="text-sm mb-1.5 text-neutral-900 dark:text-white">
               Claude / agent skill
             </h3>
             <CopyBlock
@@ -131,7 +131,7 @@ function App() {
             />
           </div>
           <div>
-            <h3 className="text-sm mb-1.5 leading-tight text-neutral-900 dark:text-white">
+            <h3 className="text-sm mb-1.5 text-neutral-900 dark:text-white">
               Cursor Bugbot rule
             </h3>
             <CopyBlock filename="BUGBOT.md" content={bugbotContent} />
