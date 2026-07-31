@@ -1,3 +1,9 @@
+## [1.2.6](https://github.com/flornkm/shadow-plugin/compare/v1.2.5...v1.2.6) (2026-07-31)
+
+### Bug Fixes
+
+* publish built dist file instead of src ([f6eeb94](https://github.com/flornkm/shadow-plugin/commit/f6eeb94d90cc28c3ee89844f29015b3c453f8858))
+
 ## [1.2.5](https://github.com/flornkm/shadow-plugin/compare/v1.2.4...v1.2.5) (2026-07-31)
 
 ### Bug Fixes
