@@ -40,8 +40,12 @@ The ring and shadow tint independently and compose on the same element:
 - `smooth-ring-{color}` tints the ring, e.g. `smooth-ring-black/10`, `smooth-ring-blue-500/40`
 
 The ring defaults to `rgba(0,0,0,0.05)` and flips to `rgba(255,255,255,0.18)`
-in dark mode — under `prefers-color-scheme`, a `.dark` class, or
-`data-theme="dark"` alike.
+in dark mode — under a `.dark` class, `data-theme="dark"`, or (for
+OS-preference dark modes) when the page declares `color-scheme: light dark`.
+It never keys off `prefers-color-scheme` alone, so light-only sites keep the
+light ring for every visitor. If the site's dark mode is driven purely by a
+`prefers-color-scheme` media query, make sure it declares
+`:root { color-scheme: light dark; }` so the ring follows.
 
 The dark alpha is much higher than the light one on purpose. The ring paints
 outside the surface, so its rendered colour comes from the page behind it, not

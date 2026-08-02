@@ -19,9 +19,18 @@
 
 /*
  * Default hairline the ring layer reads. A black hairline disappears on dark
- * backgrounds, so dark mode flips it to a white one out of the box — for
- * media-query dark, class dark (`.dark`), and `data-theme="dark"` alike.
+ * backgrounds, so dark mode flips it to a white one — via a `.dark` class,
+ * `data-theme="dark"`, or the page's `color-scheme` (see below).
  * Sites can still override `--smooth-ring-color` at any scope.
+ *
+ * The OS-preference flip deliberately does NOT key off `prefers-color-scheme`:
+ * that media query reports the visitor's OS setting, not whether the page has
+ * a dark theme, so a light-only site would hand its dark-OS visitors a white
+ * hairline on a still-light page — an invisible ring. `light-dark()` resolves
+ * from the page's declared `color-scheme` instead, the standard way a page
+ * opts into dark rendering: light-only pages (which never declare it) keep the
+ * black ring for every visitor, and pages with a media-query dark theme opt in
+ * with `:root { color-scheme: light dark; }`.
  *
  * On the alphas: the ring is an OUTER layer, so it paints on the page behind
  * the surface, and its rendered colour is therefore set by the page background
@@ -42,10 +51,20 @@
   --smooth-ring-color: rgba(0, 0, 0, 0.05);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not(.light):not([data-theme='light']) {
-    --smooth-ring-color: rgba(255, 255, 255, 0.18);
+/*
+ * Guarded because unregistered custom properties skip parse-time validation:
+ * on a browser without light-dark(), the raw function would substitute into
+ * box-shadow and invalidate the whole declaration — shadow and all.
+ */
+@supports (color: light-dark(black, white)) {
+  :root {
+    --smooth-ring-color: light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.18));
   }
+}
+
+.light,
+[data-theme='light'] {
+  --smooth-ring-color: rgba(0, 0, 0, 0.05);
 }
 
 .dark,
