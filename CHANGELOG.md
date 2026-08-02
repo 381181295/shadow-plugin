@@ -1,3 +1,9 @@
+## [1.2.7](https://github.com/flornkm/shadow-plugin/compare/v1.2.6...v1.2.7) (2026-08-02)
+
+### Bug Fixes
+
+* resolve dark ring from the page's color-scheme, not the visitor's OS preference ([bf2e590](https://github.com/flornkm/shadow-plugin/commit/bf2e590d6ed3a7acbad44047a7d3a4ba83539517))
+
 ## [1.2.6](https://github.com/flornkm/shadow-plugin/compare/v1.2.5...v1.2.6) (2026-07-31)
 
 ### Bug Fixes
