@@ -94,10 +94,16 @@ function App() {
           </div>
           <div>
             <h3 className="text-sm mb-1.5 text-neutral-400">
+              Override a shadow that loses to other CSS
+            </h3>
+            <CodeField code="<div className='smooth-shadow-md!' />" language="html" />
+          </div>
+          <div>
+            <h3 className="text-sm mb-1.5 text-neutral-400">
               Optional: Replace all your default shadows
             </h3>
             <CodeField
-              code={`@theme {\n  --shadow-xs: var(--smooth-shadow-xs);\n  --shadow-sm: var(--smooth-shadow-sm);\n  --shadow-md: var(--smooth-shadow-md);\n  --shadow-lg: var(--smooth-shadow-lg);\n  --shadow-xl: var(--smooth-shadow-xl);\n  --shadow-2xl: var(--smooth-shadow-2xl);\n}`}
+              code={`@import 'tailwindcss';\n@import 'shadow-plugin/unprefixed';`}
               language="css"
             />
           </div>

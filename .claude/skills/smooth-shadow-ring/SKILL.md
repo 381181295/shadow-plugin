@@ -54,6 +54,18 @@ raised dark surface, and too low an alpha makes the edge land on the surface's
 own colour and disappear. If a surface is light enough to sit near the ring
 anyway (`neutral-700` and up on a dark page), set `smooth-ring-*` explicitly.
 
+## Overriding
+
+The utilities carry no `!important` and follow the normal cascade, so a later
+utility, an inline `style`, or a JS animation on `box-shadow` overrides them
+normally. When one has to win against CSS that outranks it — a component
+library's own `box-shadow`, which usually ships unlayered — use Tailwind's
+important modifier on that element instead of a global override:
+
+```html
+<div class="smooth-shadow-ring-md!">…</div>
+```
+
 ## Example
 
 ```html

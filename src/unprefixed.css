@@ -1,0 +1,39 @@
+/**
+ * TailwindCSS smooth shadow effect plugin — unprefixed entrypoint.
+ *
+ * Instead of adding `smooth-shadow-*` classes, this maps the smooth stacks
+ * onto Tailwind's own shadow scale, so the native `shadow-{size}` utilities
+ * render them. Because the values are literal layer lists (not var()
+ * references), Tailwind's build-time shadow machinery fully applies: the
+ * opacity modifier (`shadow-md/40`), `shadow-{color}`, and variants all work
+ * exactly like stock Tailwind.
+ *
+ * Note this is why the older `--shadow-md: var(--smooth-shadow-md)` recipe
+ * falls short: Tailwind cannot see inside the var to reach the individual
+ * layers, so `shadow-md/40` and `shadow-{color}` silently do nothing.
+ *
+ * `smooth-shadow-ring-*` has no native equivalent, so the ring utilities keep
+ * their names and are included here.
+ *
+ * @author Florian Kiem <https://github.com/flornkm>
+ * @license MIT
+ */
+
+@theme {
+  --shadow-xs: 0 0 4px 0 rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 18px 47px 0 rgba(0, 0, 0, 0.03), 0 7.5px 19px 0 rgba(0, 0, 0, 0.02),
+    0 4px 10.5px 0 rgba(0, 0, 0, 0.02), 0 2.3px 5.8px 0 rgba(0, 0, 0, 0.01),
+    0 1.2px 3.1px 0 rgba(0, 0, 0, 0.01), 0 0.5px 1.3px 0 rgba(0, 0, 0, 0.01);
+  --shadow-md: 0 17.54px 23.39px 0 rgba(0, 0, 0, 0.04), 0 9.4px 12.5px 0 rgba(0, 0, 0, 0.03),
+    0 5.25px 7px 0 rgba(0, 0, 0, 0.02), 0 2.79px 3.72px -2px rgba(0, 0, 0, 0.01),
+    0 1.16px 1.5px 0 rgba(0, 0, 0, 0.01);
+  --shadow-lg: 0 25px 50px 0 rgba(0, 0, 0, 0.05), 0 12px 24px 0 rgba(0, 0, 0, 0.04),
+    0 6px 12px 0 rgba(0, 0, 0, 0.03), 0 3px 6px 0 rgba(0, 0, 0, 0.02),
+    0 1.5px 3px 0 rgba(0, 0, 0, 0.02);
+  --shadow-xl: 0 40px 80px 0 rgba(0, 0, 0, 0.06), 0 20px 40px 0 rgba(0, 0, 0, 0.05),
+    0 10px 20px 0 rgba(0, 0, 0, 0.04), 0 5px 10px 0 rgba(0, 0, 0, 0.03),
+    0 2px 4px 0 rgba(0, 0, 0, 0.02);
+  --shadow-2xl: 0 60px 120px 0 rgba(0, 0, 0, 0.07), 0 30px 60px 0 rgba(0, 0, 0, 0.06),
+    0 15px 30px 0 rgba(0, 0, 0, 0.05), 0 7.5px 15px 0 rgba(0, 0, 0, 0.04),
+    0 3px 6px 0 rgba(0, 0, 0, 0.03);
+}

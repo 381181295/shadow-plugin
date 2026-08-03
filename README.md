@@ -67,18 +67,30 @@ If your surface is light enough to sit near the ring anyway (`neutral-700` and u
 }
 ```
 
+### Overriding a smooth shadow
+
+The utilities are plain Tailwind utilities with no `!important`, so they follow the normal cascade — a later utility, an inline `style`, or a JS animation on `box-shadow` all override them the way you'd expect.
+
+If you need one to win against CSS that would otherwise beat it (a component library's own `box-shadow`, which usually ships unlayered), use Tailwind's important modifier rather than reaching for a global setting:
+
+```html
+<div class="smooth-shadow-md!" />
+```
+
+It works on every utility here, including variants and the ring: `smooth-shadow-ring-lg!`, `hover:smooth-shadow-lg!`, `smooth-ring-blue-500/40!`.
+
 ### Optional: Replace all your default shadows
 
+Import the unprefixed entrypoint and Tailwind's own `shadow-xs` … `shadow-2xl` render the smooth stacks — no new class names to learn:
+
 ```css
-@theme {
-  --shadow-xs: var(--smooth-shadow-xs);
-  --shadow-sm: var(--smooth-shadow-sm);
-  --shadow-md: var(--smooth-shadow-md);
-  --shadow-lg: var(--smooth-shadow-lg);
-  --shadow-xl: var(--smooth-shadow-xl);
-  --shadow-2xl: var(--smooth-shadow-2xl);
-}
+@import "tailwindcss";
+@import "shadow-plugin/unprefixed";
 ```
+
+Because it writes literal values into Tailwind's `--shadow-*` theme tokens, the full native feature set keeps working: the opacity modifier (`shadow-md/40`), `shadow-{color}`, and variants. The `smooth-shadow-ring-*` utilities have no native equivalent, so they come along under their own names. An existing scale migrates by deleting the `smooth-` prefix.
+
+> Don't use `@theme { --shadow-md: var(--smooth-shadow-md); }` for this. It renders, but Tailwind can't see inside the var to reach the individual layers, so `shadow-md/40` and `shadow-{color}` silently stop working.
 
 ## Available classes
 

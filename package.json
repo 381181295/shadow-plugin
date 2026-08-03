@@ -3,11 +3,14 @@
   "version": "0.0.0-development",
   "description": "TailwindCSS plugin for adding nice looking shadows.",
   "scripts": {
-    "build": "mkdir -p dist && cat src/shadows.css src/shadow-ring.css > dist/shadow-plugin.css",
+    "build": "rm -rf dist && mkdir -p dist && cat src/shadows.css src/shadow-ring.css > dist/shadow-plugin.css && cat src/unprefixed.css src/shadow-ring.css > dist/shadow-plugin.unprefixed.css",
     "format": "prettier --write --ignore-unknown .",
     "demo": "open demo/index.html"
   },
-  "exports": "./dist/shadow-plugin.css",
+  "exports": {
+    ".": "./dist/shadow-plugin.css",
+    "./unprefixed": "./dist/shadow-plugin.unprefixed.css"
+  },
   "main": "./dist/shadow-plugin.css",
   "files": [
     "dist"
