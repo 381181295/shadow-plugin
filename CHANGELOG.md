@@ -1,3 +1,17 @@
+## [2.0.0](https://github.com/flornkm/shadow-plugin/compare/v1.2.7...v2.0.0) (2026-08-03)
+
+### ⚠ BREAKING CHANGES
+
+* smooth-shadow-* utilities no longer emit !important.
+A smooth shadow that previously won against unlayered CSS (component
+library styles, plain stylesheets) may now lose to it. Add the
+important modifier on those elements — class="smooth-shadow-md!" — to
+restore the old behavior where it is actually needed.
+
+### Features
+
+* drop !important and add unprefixed entrypoint ([#4](https://github.com/flornkm/shadow-plugin/issues/4)) ([4fe0d6b](https://github.com/flornkm/shadow-plugin/commit/4fe0d6b909c15dda2c61b6a50253a446c0004765))
+
 ## [1.2.7](https://github.com/flornkm/shadow-plugin/compare/v1.2.6...v1.2.7) (2026-08-02)
 
 ### Bug Fixes
