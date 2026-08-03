@@ -79,13 +79,13 @@
     0 5.25px 7px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
     0 2.79px 3.72px -2px color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
     0 1.16px 1.5px 0 color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
-    0 0 0 1px var(--smooth-ring-color) !important;
+    0 0 0 1px var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-xs {
   --smooth-shadow-color: var(--tw-shadow-color, black);
   box-shadow: 0 0 4px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
-    0 0 0 1px var(--smooth-ring-color) !important;
+    0 0 0 1px var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-sm {
@@ -96,7 +96,7 @@
     0 2.3px 5.8px 0 color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
     0 1.2px 3.1px 0 color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
     0 0.5px 1.3px 0 color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
-    0 0 0 1px var(--smooth-ring-color) !important;
+    0 0 0 1px var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-md {
@@ -106,7 +106,7 @@
     0 5.25px 7px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
     0 2.79px 3.72px -2px color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
     0 1.16px 1.5px 0 color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
-    0 0 0 1px var(--smooth-ring-color) !important;
+    0 0 0 1px var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-lg {
@@ -116,7 +116,7 @@
     0 6px 12px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
     0 3px 6px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
     0 1.5px 3px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
-    0 0 0 1px var(--smooth-ring-color) !important;
+    0 0 0 1px var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-xl {
@@ -126,7 +126,7 @@
     0 10px 20px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
     0 5px 10px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
     0 2px 4px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
-    0 0 0 1px var(--smooth-ring-color) !important;
+    0 0 0 1px var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-2xl {
@@ -136,7 +136,7 @@
     0 15px 30px 0 color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent),
     0 7.5px 15px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
     0 3px 6px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
-    0 0 0 1px var(--smooth-ring-color) !important;
+    0 0 0 1px var(--smooth-ring-color);
 }
 
 /*
