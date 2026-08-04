@@ -54,6 +54,14 @@ raised dark surface, and too low an alpha makes the edge land on the surface's
 own colour and disappear. If a surface is light enough to sit near the ring
 anyway (`neutral-700` and up on a dark page), set `smooth-ring-*` explicitly.
 
+## Ring width
+
+The hairline is `1px` by default and follows the project's Tailwind ring width
+automatically, so a project with `@theme { --default-ring-width: 0.5px; }` gets
+a 0.5px hairline here with no extra setup. Do not hardcode a width to match;
+override `--smooth-ring-width` at any scope only when it must differ from the
+project ring width — per element via `[--smooth-ring-width:2px]`.
+
 ## Overriding
 
 The utilities carry no `!important` and follow the normal cascade, so a later
