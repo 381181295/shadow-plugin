@@ -1,3 +1,9 @@
+## [2.1.0](https://github.com/flornkm/shadow-plugin/compare/v2.0.0...v2.1.0) (2026-08-04)
+
+### Features
+
+* follow the project's Tailwind ring width for the hairline ([6984841](https://github.com/flornkm/shadow-plugin/commit/69848410cc6d663f12b89cee6e8902df3266a72d))
+
 ## [2.0.0](https://github.com/flornkm/shadow-plugin/compare/v1.2.7...v2.0.0) (2026-08-03)
 
 ### ⚠ BREAKING CHANGES
