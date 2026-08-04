@@ -11,6 +11,7 @@
 - Color the shadow with tokens like `shadow-red-500`
 - For elevated surfaces (dialogs, popovers, cards, menus) use `smooth-shadow-ring` or the size variants `smooth-shadow-ring-xs` up to `smooth-shadow-ring-2xl`, the shadow with a 1px hairline ring baked in; never add a `border`/`ring` to the same element
 - Color the ring independently from the shadow with `smooth-ring-{color}`, e.g. `smooth-ring-black/10`
+- The hairline follows the project's `--default-ring-width` automatically (1px if unset); override `--smooth-ring-width` only when it must differ from the project ring width
 - The utilities carry no `!important` and follow the normal cascade. If one must win against CSS that outranks it (a component library's own `box-shadow`), use Tailwind's important modifier on that element — `smooth-shadow-md!` — rather than a global override
 - To replace Tailwind's own shadow scale instead of adding new class names, import `shadow-plugin/unprefixed` and use the native `shadow-{size}` utilities (this keeps `shadow-md/40` and `shadow-{color}` working; a `@theme { --shadow-md: var(--smooth-shadow-md); }` remap does not)
 

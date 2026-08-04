@@ -67,6 +67,26 @@ If your surface is light enough to sit near the ring anyway (`neutral-700` and u
 }
 ```
 
+#### Ring width
+
+The hairline follows your project's Tailwind ring width, so a scale built on a thinner ring gets a matching one here — no configuration needed:
+
+```css
+@theme {
+  --default-ring-width: 0.5px;
+}
+```
+
+It defaults to `1px`, matching Tailwind's own default. To set the ring width independently of `--default-ring-width`, or to change it for one subtree, set `--smooth-ring-width` at any scope:
+
+```css
+:root {
+  --smooth-ring-width: 2px;
+}
+```
+
+Per element, Tailwind's arbitrary-property syntax works too: `<div class="smooth-shadow-ring-md [--smooth-ring-width:2px]" />`.
+
 ### Overriding a smooth shadow
 
 The utilities are plain Tailwind utilities with no `!important`, so they follow the normal cascade — a later utility, an inline `style`, or a JS animation on `box-shadow` all override them the way you'd expect.
@@ -105,6 +125,8 @@ Because it writes literal values into Tailwind's `--shadow-*` theme tokens, the 
 | `smooth-shadow-none`                               | None                                                                   |
 | `smooth-shadow-ring-xs` … `smooth-shadow-ring-2xl` | Shadow + 1px hairline ring (`smooth-shadow-ring` = medium)             |
 | `smooth-ring-{color}`                              | Ring color override, supports opacity (e.g. `smooth-ring-blue-500/40`) |
+
+The ring reads two custom properties you can set at any scope: `--smooth-ring-color` and `--smooth-ring-width`.
 
 ## Agent skills
 
