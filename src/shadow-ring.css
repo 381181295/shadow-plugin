@@ -94,32 +94,27 @@
   --smooth-shadow-spread-1: 0;
   --smooth-shadow-opacity-1: 4%;
   --smooth-shadow-ambient-spread-1: 17.54px;
-  --smooth-shadow-ambient-opacity-1: 5%;
-  --smooth-shadow-ambient-dark-opacity-1: 6%;
+  --smooth-shadow-ambient-opacity-1: 6%;
   --smooth-shadow-offset-2: 9.4px;
   --smooth-shadow-spread-2: 0;
   --smooth-shadow-opacity-2: 3%;
   --smooth-shadow-ambient-spread-2: 9.4px;
-  --smooth-shadow-ambient-opacity-2: 3.75%;
-  --smooth-shadow-ambient-dark-opacity-2: 4.5%;
+  --smooth-shadow-ambient-opacity-2: 4.5%;
   --smooth-shadow-offset-3: 5.25px;
   --smooth-shadow-spread-3: 0;
   --smooth-shadow-opacity-3: 2%;
   --smooth-shadow-ambient-spread-3: 5.25px;
-  --smooth-shadow-ambient-opacity-3: 2.5%;
-  --smooth-shadow-ambient-dark-opacity-3: 3%;
+  --smooth-shadow-ambient-opacity-3: 3%;
   --smooth-shadow-offset-4: 2.79px;
   --smooth-shadow-spread-4: -2px;
   --smooth-shadow-opacity-4: 1%;
   --smooth-shadow-ambient-spread-4: 0.79px;
-  --smooth-shadow-ambient-opacity-4: 1.25%;
-  --smooth-shadow-ambient-dark-opacity-4: 1.5%;
+  --smooth-shadow-ambient-opacity-4: 1.5%;
   --smooth-shadow-offset-5: 1.16px;
   --smooth-shadow-spread-5: 0;
   --smooth-shadow-opacity-5: 1%;
   --smooth-shadow-ambient-spread-5: 1.16px;
-  --smooth-shadow-ambient-opacity-5: 1.25%;
-  --smooth-shadow-ambient-dark-opacity-5: 1.5%;
+  --smooth-shadow-ambient-opacity-5: 1.5%;
   box-shadow:
     0 var(--smooth-shadow-offset-1) 23.39px var(--smooth-shadow-spread-1)
       color-mix(in srgb, var(--smooth-shadow-color) var(--smooth-shadow-opacity-1), transparent),
@@ -140,8 +135,7 @@
   --smooth-shadow-spread-1: 0;
   --smooth-shadow-opacity-1: 4%;
   --smooth-shadow-ambient-spread-1: 0;
-  --smooth-shadow-ambient-opacity-1: 5%;
-  --smooth-shadow-ambient-dark-opacity-1: 6%;
+  --smooth-shadow-ambient-opacity-1: 6%;
   box-shadow:
     0 var(--smooth-shadow-offset-1) 4px var(--smooth-shadow-spread-1)
       color-mix(in srgb, var(--smooth-shadow-color) var(--smooth-shadow-opacity-1), transparent),
@@ -154,38 +148,32 @@
   --smooth-shadow-spread-1: 0;
   --smooth-shadow-opacity-1: 3%;
   --smooth-shadow-ambient-spread-1: 18px;
-  --smooth-shadow-ambient-opacity-1: 3.75%;
-  --smooth-shadow-ambient-dark-opacity-1: 4.5%;
+  --smooth-shadow-ambient-opacity-1: 4.5%;
   --smooth-shadow-offset-2: 7.5px;
   --smooth-shadow-spread-2: 0;
   --smooth-shadow-opacity-2: 2%;
   --smooth-shadow-ambient-spread-2: 7.5px;
-  --smooth-shadow-ambient-opacity-2: 2.5%;
-  --smooth-shadow-ambient-dark-opacity-2: 3%;
+  --smooth-shadow-ambient-opacity-2: 3%;
   --smooth-shadow-offset-3: 4px;
   --smooth-shadow-spread-3: 0;
   --smooth-shadow-opacity-3: 2%;
   --smooth-shadow-ambient-spread-3: 4px;
-  --smooth-shadow-ambient-opacity-3: 2.5%;
-  --smooth-shadow-ambient-dark-opacity-3: 3%;
+  --smooth-shadow-ambient-opacity-3: 3%;
   --smooth-shadow-offset-4: 2.3px;
   --smooth-shadow-spread-4: 0;
   --smooth-shadow-opacity-4: 1%;
   --smooth-shadow-ambient-spread-4: 2.3px;
-  --smooth-shadow-ambient-opacity-4: 1.25%;
-  --smooth-shadow-ambient-dark-opacity-4: 1.5%;
+  --smooth-shadow-ambient-opacity-4: 1.5%;
   --smooth-shadow-offset-5: 1.2px;
   --smooth-shadow-spread-5: 0;
   --smooth-shadow-opacity-5: 1%;
   --smooth-shadow-ambient-spread-5: 1.2px;
-  --smooth-shadow-ambient-opacity-5: 1.25%;
-  --smooth-shadow-ambient-dark-opacity-5: 1.5%;
+  --smooth-shadow-ambient-opacity-5: 1.5%;
   --smooth-shadow-offset-6: 0.5px;
   --smooth-shadow-spread-6: 0;
   --smooth-shadow-opacity-6: 1%;
   --smooth-shadow-ambient-spread-6: 0.5px;
-  --smooth-shadow-ambient-opacity-6: 1.25%;
-  --smooth-shadow-ambient-dark-opacity-6: 1.5%;
+  --smooth-shadow-ambient-opacity-6: 1.5%;
   box-shadow:
     0 var(--smooth-shadow-offset-1) 47px var(--smooth-shadow-spread-1)
       color-mix(in srgb, var(--smooth-shadow-color) var(--smooth-shadow-opacity-1), transparent),
@@ -208,32 +196,27 @@
   --smooth-shadow-spread-1: 0;
   --smooth-shadow-opacity-1: 4%;
   --smooth-shadow-ambient-spread-1: 17.54px;
-  --smooth-shadow-ambient-opacity-1: 5%;
-  --smooth-shadow-ambient-dark-opacity-1: 6%;
+  --smooth-shadow-ambient-opacity-1: 6%;
   --smooth-shadow-offset-2: 9.4px;
   --smooth-shadow-spread-2: 0;
   --smooth-shadow-opacity-2: 3%;
   --smooth-shadow-ambient-spread-2: 9.4px;
-  --smooth-shadow-ambient-opacity-2: 3.75%;
-  --smooth-shadow-ambient-dark-opacity-2: 4.5%;
+  --smooth-shadow-ambient-opacity-2: 4.5%;
   --smooth-shadow-offset-3: 5.25px;
   --smooth-shadow-spread-3: 0;
   --smooth-shadow-opacity-3: 2%;
   --smooth-shadow-ambient-spread-3: 5.25px;
-  --smooth-shadow-ambient-opacity-3: 2.5%;
-  --smooth-shadow-ambient-dark-opacity-3: 3%;
+  --smooth-shadow-ambient-opacity-3: 3%;
   --smooth-shadow-offset-4: 2.79px;
   --smooth-shadow-spread-4: -2px;
   --smooth-shadow-opacity-4: 1%;
   --smooth-shadow-ambient-spread-4: 0.79px;
-  --smooth-shadow-ambient-opacity-4: 1.25%;
-  --smooth-shadow-ambient-dark-opacity-4: 1.5%;
+  --smooth-shadow-ambient-opacity-4: 1.5%;
   --smooth-shadow-offset-5: 1.16px;
   --smooth-shadow-spread-5: 0;
   --smooth-shadow-opacity-5: 1%;
   --smooth-shadow-ambient-spread-5: 1.16px;
-  --smooth-shadow-ambient-opacity-5: 1.25%;
-  --smooth-shadow-ambient-dark-opacity-5: 1.5%;
+  --smooth-shadow-ambient-opacity-5: 1.5%;
   box-shadow:
     0 var(--smooth-shadow-offset-1) 23.39px var(--smooth-shadow-spread-1)
       color-mix(in srgb, var(--smooth-shadow-color) var(--smooth-shadow-opacity-1), transparent),
@@ -254,32 +237,27 @@
   --smooth-shadow-spread-1: 0;
   --smooth-shadow-opacity-1: 5%;
   --smooth-shadow-ambient-spread-1: 25px;
-  --smooth-shadow-ambient-opacity-1: 6.25%;
-  --smooth-shadow-ambient-dark-opacity-1: 7.5%;
+  --smooth-shadow-ambient-opacity-1: 7.5%;
   --smooth-shadow-offset-2: 12px;
   --smooth-shadow-spread-2: 0;
   --smooth-shadow-opacity-2: 4%;
   --smooth-shadow-ambient-spread-2: 12px;
-  --smooth-shadow-ambient-opacity-2: 5%;
-  --smooth-shadow-ambient-dark-opacity-2: 6%;
+  --smooth-shadow-ambient-opacity-2: 6%;
   --smooth-shadow-offset-3: 6px;
   --smooth-shadow-spread-3: 0;
   --smooth-shadow-opacity-3: 3%;
   --smooth-shadow-ambient-spread-3: 6px;
-  --smooth-shadow-ambient-opacity-3: 3.75%;
-  --smooth-shadow-ambient-dark-opacity-3: 4.5%;
+  --smooth-shadow-ambient-opacity-3: 4.5%;
   --smooth-shadow-offset-4: 3px;
   --smooth-shadow-spread-4: 0;
   --smooth-shadow-opacity-4: 2%;
   --smooth-shadow-ambient-spread-4: 3px;
-  --smooth-shadow-ambient-opacity-4: 2.5%;
-  --smooth-shadow-ambient-dark-opacity-4: 3%;
+  --smooth-shadow-ambient-opacity-4: 3%;
   --smooth-shadow-offset-5: 1.5px;
   --smooth-shadow-spread-5: 0;
   --smooth-shadow-opacity-5: 2%;
   --smooth-shadow-ambient-spread-5: 1.5px;
-  --smooth-shadow-ambient-opacity-5: 2.5%;
-  --smooth-shadow-ambient-dark-opacity-5: 3%;
+  --smooth-shadow-ambient-opacity-5: 3%;
   box-shadow:
     0 var(--smooth-shadow-offset-1) 50px var(--smooth-shadow-spread-1)
       color-mix(in srgb, var(--smooth-shadow-color) var(--smooth-shadow-opacity-1), transparent),
@@ -300,32 +278,27 @@
   --smooth-shadow-spread-1: 0;
   --smooth-shadow-opacity-1: 6%;
   --smooth-shadow-ambient-spread-1: 40px;
-  --smooth-shadow-ambient-opacity-1: 7.5%;
-  --smooth-shadow-ambient-dark-opacity-1: 9%;
+  --smooth-shadow-ambient-opacity-1: 9%;
   --smooth-shadow-offset-2: 20px;
   --smooth-shadow-spread-2: 0;
   --smooth-shadow-opacity-2: 5%;
   --smooth-shadow-ambient-spread-2: 20px;
-  --smooth-shadow-ambient-opacity-2: 6.25%;
-  --smooth-shadow-ambient-dark-opacity-2: 7.5%;
+  --smooth-shadow-ambient-opacity-2: 7.5%;
   --smooth-shadow-offset-3: 10px;
   --smooth-shadow-spread-3: 0;
   --smooth-shadow-opacity-3: 4%;
   --smooth-shadow-ambient-spread-3: 10px;
-  --smooth-shadow-ambient-opacity-3: 5%;
-  --smooth-shadow-ambient-dark-opacity-3: 6%;
+  --smooth-shadow-ambient-opacity-3: 6%;
   --smooth-shadow-offset-4: 5px;
   --smooth-shadow-spread-4: 0;
   --smooth-shadow-opacity-4: 3%;
   --smooth-shadow-ambient-spread-4: 5px;
-  --smooth-shadow-ambient-opacity-4: 3.75%;
-  --smooth-shadow-ambient-dark-opacity-4: 4.5%;
+  --smooth-shadow-ambient-opacity-4: 4.5%;
   --smooth-shadow-offset-5: 2px;
   --smooth-shadow-spread-5: 0;
   --smooth-shadow-opacity-5: 2%;
   --smooth-shadow-ambient-spread-5: 2px;
-  --smooth-shadow-ambient-opacity-5: 2.5%;
-  --smooth-shadow-ambient-dark-opacity-5: 3%;
+  --smooth-shadow-ambient-opacity-5: 3%;
   box-shadow:
     0 var(--smooth-shadow-offset-1) 80px var(--smooth-shadow-spread-1)
       color-mix(in srgb, var(--smooth-shadow-color) var(--smooth-shadow-opacity-1), transparent),
@@ -346,32 +319,27 @@
   --smooth-shadow-spread-1: 0;
   --smooth-shadow-opacity-1: 7%;
   --smooth-shadow-ambient-spread-1: 60px;
-  --smooth-shadow-ambient-opacity-1: 8.75%;
-  --smooth-shadow-ambient-dark-opacity-1: 10.5%;
+  --smooth-shadow-ambient-opacity-1: 10.5%;
   --smooth-shadow-offset-2: 30px;
   --smooth-shadow-spread-2: 0;
   --smooth-shadow-opacity-2: 6%;
   --smooth-shadow-ambient-spread-2: 30px;
-  --smooth-shadow-ambient-opacity-2: 7.5%;
-  --smooth-shadow-ambient-dark-opacity-2: 9%;
+  --smooth-shadow-ambient-opacity-2: 9%;
   --smooth-shadow-offset-3: 15px;
   --smooth-shadow-spread-3: 0;
   --smooth-shadow-opacity-3: 5%;
   --smooth-shadow-ambient-spread-3: 15px;
-  --smooth-shadow-ambient-opacity-3: 6.25%;
-  --smooth-shadow-ambient-dark-opacity-3: 7.5%;
+  --smooth-shadow-ambient-opacity-3: 7.5%;
   --smooth-shadow-offset-4: 7.5px;
   --smooth-shadow-spread-4: 0;
   --smooth-shadow-opacity-4: 4%;
   --smooth-shadow-ambient-spread-4: 7.5px;
-  --smooth-shadow-ambient-opacity-4: 5%;
-  --smooth-shadow-ambient-dark-opacity-4: 6%;
+  --smooth-shadow-ambient-opacity-4: 6%;
   --smooth-shadow-offset-5: 3px;
   --smooth-shadow-spread-5: 0;
   --smooth-shadow-opacity-5: 3%;
   --smooth-shadow-ambient-spread-5: 3px;
-  --smooth-shadow-ambient-opacity-5: 3.75%;
-  --smooth-shadow-ambient-dark-opacity-5: 4.5%;
+  --smooth-shadow-ambient-opacity-5: 4.5%;
   box-shadow:
     0 var(--smooth-shadow-offset-1) 120px var(--smooth-shadow-spread-1)
       color-mix(in srgb, var(--smooth-shadow-color) var(--smooth-shadow-opacity-1), transparent),
@@ -411,20 +379,6 @@
   --smooth-shadow-opacity-4: var(--smooth-shadow-ambient-opacity-4);
   --smooth-shadow-opacity-5: var(--smooth-shadow-ambient-opacity-5);
   --smooth-shadow-opacity-6: var(--smooth-shadow-ambient-opacity-6);
-}
-
-/*
- * Black shadows need more opacity against dark surfaces. Keep the stronger
- * profile in explicit dark themes while light themes use the quieter default.
- */
-.dark .smooth-shadow-ambient,
-[data-theme="dark"] .smooth-shadow-ambient {
-  --smooth-shadow-opacity-1: var(--smooth-shadow-ambient-dark-opacity-1);
-  --smooth-shadow-opacity-2: var(--smooth-shadow-ambient-dark-opacity-2);
-  --smooth-shadow-opacity-3: var(--smooth-shadow-ambient-dark-opacity-3);
-  --smooth-shadow-opacity-4: var(--smooth-shadow-ambient-dark-opacity-4);
-  --smooth-shadow-opacity-5: var(--smooth-shadow-ambient-dark-opacity-5);
-  --smooth-shadow-opacity-6: var(--smooth-shadow-ambient-dark-opacity-6);
 }
 
 /*
