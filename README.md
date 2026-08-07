@@ -132,6 +132,7 @@ Because it writes literal values into Tailwind's `--shadow-*` theme tokens, the 
 | `smooth-shadow-xl`                                 | Extra large                                                            |
 | `smooth-shadow-2xl`                                | 2x large                                                               |
 | `smooth-shadow-none`                               | None                                                                   |
+| `smooth-shadow-ambient`                            | Opt-in size-aware zero-offset layer                                    |
 | `smooth-shadow-ring-xs` … `smooth-shadow-ring-2xl` | Shadow + 1px hairline ring (`smooth-shadow-ring` = medium)             |
 | `smooth-ring-{color}`                              | Ring color override, supports opacity (e.g. `smooth-ring-blue-500/40`) |
 
