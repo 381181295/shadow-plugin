@@ -32,6 +32,15 @@ The plugin supports Tailwind's shadow color utilities:
 <div class="smooth-shadow-md shadow-blue-500/50" />
 ```
 
+### Ambient layer
+
+Add `smooth-shadow-ambient` when a floating surface needs equal shadow intensity above and beside it. The utility enables a size-aware zero-offset layer and composes with both ringless and ringed shadows. Without this class, the original directional shadow is unchanged.
+
+```html
+<div class="smooth-shadow-xl smooth-shadow-ambient" />
+<div class="smooth-shadow-ring-xl smooth-shadow-ambient" />
+```
+
 ### Shadow + ring
 
 For elevated surfaces (dialogs, popovers, cards, menus), use `smooth-shadow-ring-{size}`, the same stacked shadow with a 1px hairline ring baked in as the final layer, so the edge morphs into the shadow instead of sitting next to it as a separate `border`. Don't add a `border`/`ring` on top; the ring is already in there.
@@ -57,7 +66,7 @@ The flip deliberately never keys off `prefers-color-scheme` alone: that media qu
 }
 ```
 
-The dark alpha is deliberately much higher than the light one. The ring is an outer layer, so it paints on the page *behind* the surface and takes its rendered colour from the page background rather than from the surface it outlines. In light mode that is forgiving, because a black hairline darkens away from any near-white surface. In dark mode a white hairline lightens *toward* a raised surface, so too low an alpha lands the ring on the surface's own colour and the edge vanishes.
+The dark alpha is deliberately much higher than the light one. The ring is an outer layer, so it paints on the page _behind_ the surface and takes its rendered colour from the page background rather than from the surface it outlines. In light mode that is forgiving, because a black hairline darkens away from any near-white surface. In dark mode a white hairline lightens _toward_ a raised surface, so too low an alpha lands the ring on the surface's own colour and the edge vanishes.
 
 If your surface is light enough to sit near the ring anyway (`neutral-700` and up on a dark page), set it explicitly:
 
