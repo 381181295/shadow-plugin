@@ -47,6 +47,8 @@ The ring and the shadow are colored independently. `shadow-{color}` tints the sh
 <div class="smooth-shadow-ring-md smooth-ring-blue-500/40 shadow-blue-500" />
 ```
 
+Every size includes a scaled zero-offset ambient layer. This keeps the surface separated above and on both sides while the directional layers remain stronger below.
+
 The ring defaults to `rgba(0, 0, 0, 0.05)` and flips to `rgba(255, 255, 255, 0.18)` in dark mode. That happens automatically under a `.dark` class, `data-theme="dark"`, or — for OS-preference dark modes — whenever the page declares `color-scheme: light dark`.
 
 The flip deliberately never keys off `prefers-color-scheme` alone: that media query reports the visitor's OS setting, not whether your site has a dark theme, so a light-only site keeps its light ring for every visitor instead of serving dark-OS users an invisible white hairline. If your dark mode is driven purely by a `prefers-color-scheme` media query, declare it (good practice anyway — it also fixes scrollbars and form controls) and the ring follows automatically:
@@ -57,7 +59,7 @@ The flip deliberately never keys off `prefers-color-scheme` alone: that media qu
 }
 ```
 
-The dark alpha is deliberately much higher than the light one. The ring is an outer layer, so it paints on the page *behind* the surface and takes its rendered colour from the page background rather than from the surface it outlines. In light mode that is forgiving, because a black hairline darkens away from any near-white surface. In dark mode a white hairline lightens *toward* a raised surface, so too low an alpha lands the ring on the surface's own colour and the edge vanishes.
+The dark alpha is deliberately much higher than the light one. The ring is an outer layer, so it paints on the page _behind_ the surface and takes its rendered colour from the page background rather than from the surface it outlines. In light mode that is forgiving, because a black hairline darkens away from any near-white surface. In dark mode a white hairline lightens _toward_ a raised surface, so too low an alpha lands the ring on the surface's own colour and the edge vanishes.
 
 If your surface is light enough to sit near the ring anyway (`neutral-700` and up on a dark page), set it explicitly:
 
