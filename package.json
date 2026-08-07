@@ -5,8 +5,7 @@
   "scripts": {
     "build": "rm -rf dist && mkdir -p dist && cat src/shadows.css src/shadow-ring.css > dist/shadow-plugin.css && cat src/unprefixed.css src/shadow-ring.css > dist/shadow-plugin.unprefixed.css",
     "format": "prettier --write --ignore-unknown .",
-    "demo": "open demo/index.html",
-    "prepare": "npm run build"
+    "demo": "open demo/index.html"
   },
   "exports": {
     ".": "./dist/shadow-plugin.css",
