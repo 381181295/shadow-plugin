@@ -34,7 +34,7 @@ The plugin supports Tailwind's shadow color utilities:
 
 ### Ambient layer
 
-Add `smooth-shadow-ambient` when a floating surface needs equal shadow intensity above and beside it. The utility enables a size-aware zero-offset layer and composes with both ringless and ringed shadows. Without this class, the original directional shadow is unchanged.
+Add `smooth-shadow-ambient` when a floating surface needs the same shadow on every side. The utility re-centers every layer in the selected shadow stack while preserving the original blur and opacity values. It composes with both ringless and ringed shadows. Without this class, the original directional shadow is unchanged.
 
 ```html
 <div class="smooth-shadow-xl smooth-shadow-ambient" />
@@ -132,7 +132,7 @@ Because it writes literal values into Tailwind's `--shadow-*` theme tokens, the 
 | `smooth-shadow-xl`                                 | Extra large                                                            |
 | `smooth-shadow-2xl`                                | 2x large                                                               |
 | `smooth-shadow-none`                               | None                                                                   |
-| `smooth-shadow-ambient`                            | Opt-in size-aware zero-offset layer                                    |
+| `smooth-shadow-ambient`                            | Opt-in symmetric version of the selected shadow stack                  |
 | `smooth-shadow-ring-xs` … `smooth-shadow-ring-2xl` | Shadow + 1px hairline ring (`smooth-shadow-ring` = medium)             |
 | `smooth-ring-{color}`                              | Ring color override, supports opacity (e.g. `smooth-ring-blue-500/40`) |
 
