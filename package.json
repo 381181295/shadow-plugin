@@ -1,6 +1,6 @@
 {
   "name": "shadow-plugin",
-  "version": "2.1.0-flex.2",
+  "version": "2.1.0-flex.3",
   "description": "TailwindCSS plugin for adding nice looking shadows.",
   "scripts": {
     "build": "rm -rf dist && mkdir -p dist && cat src/shadows.css src/shadow-ring.css > dist/shadow-plugin.css && cat src/unprefixed.css src/shadow-ring.css > dist/shadow-plugin.unprefixed.css",
