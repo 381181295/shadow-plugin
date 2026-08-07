@@ -88,143 +88,155 @@
   --smooth-ring-color: rgba(255, 255, 255, 0.18);
 }
 
-/*
- * Opt in to a size-aware zero-offset layer. Because x and y are both zero,
- * this layer has equal intensity above and beside the surface. The directional
- * layers remain unchanged and continue to carry depth below the surface.
- */
-@utility smooth-shadow-ambient {
-  --smooth-shadow-ambient-opacity: var(--smooth-shadow-ambient-alpha);
-}
-
 @utility smooth-shadow-ring {
   --smooth-shadow-color: var(--tw-shadow-color, black);
-  --smooth-shadow-ambient-blur: 8px;
-  --smooth-shadow-ambient-alpha: 3%;
+  --smooth-shadow-offset-1: 17.54px;
+  --smooth-shadow-offset-2: 9.4px;
+  --smooth-shadow-offset-3: 5.25px;
+  --smooth-shadow-offset-4: 2.79px;
+  --smooth-shadow-offset-5: 1.16px;
   box-shadow:
-    0 0 var(--smooth-shadow-ambient-blur) 0
-      color-mix(
-        in srgb,
-        var(--smooth-shadow-color) var(--smooth-shadow-ambient-opacity, 0%),
-        transparent
-      ),
-    0 17.54px 23.39px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
-    0 9.4px 12.5px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
-    0 5.25px 7px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
-    0 2.79px 3.72px -2px color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
-    0 1.16px 1.5px 0 color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
+    0 var(--smooth-shadow-offset-1) 23.39px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
+    0 var(--smooth-shadow-offset-2) 12.5px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
+    0 var(--smooth-shadow-offset-3) 7px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
+    0 var(--smooth-shadow-offset-4) 3.72px -2px
+      color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
+    0 var(--smooth-shadow-offset-5) 1.5px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
     0 0 0 var(--smooth-ring-width, 1px) var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-xs {
   --smooth-shadow-color: var(--tw-shadow-color, black);
-  --smooth-shadow-ambient-blur: 0;
-  --smooth-shadow-ambient-alpha: 0%;
+  --smooth-shadow-offset-1: 0;
   box-shadow:
-    0 0 var(--smooth-shadow-ambient-blur) 0
-      color-mix(
-        in srgb,
-        var(--smooth-shadow-color) var(--smooth-shadow-ambient-opacity, 0%),
-        transparent
-      ),
-    0 0 4px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
+    0 var(--smooth-shadow-offset-1) 4px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
     0 0 0 var(--smooth-ring-width, 1px) var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-sm {
   --smooth-shadow-color: var(--tw-shadow-color, black);
-  --smooth-shadow-ambient-blur: 4px;
-  --smooth-shadow-ambient-alpha: 2%;
+  --smooth-shadow-offset-1: 18px;
+  --smooth-shadow-offset-2: 7.5px;
+  --smooth-shadow-offset-3: 4px;
+  --smooth-shadow-offset-4: 2.3px;
+  --smooth-shadow-offset-5: 1.2px;
+  --smooth-shadow-offset-6: 0.5px;
   box-shadow:
-    0 0 var(--smooth-shadow-ambient-blur) 0
-      color-mix(
-        in srgb,
-        var(--smooth-shadow-color) var(--smooth-shadow-ambient-opacity, 0%),
-        transparent
-      ),
-    0 18px 47px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
-    0 7.5px 19px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
-    0 4px 10.5px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
-    0 2.3px 5.8px 0 color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
-    0 1.2px 3.1px 0 color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
-    0 0.5px 1.3px 0 color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
+    0 var(--smooth-shadow-offset-1) 47px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
+    0 var(--smooth-shadow-offset-2) 19px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
+    0 var(--smooth-shadow-offset-3) 10.5px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
+    0 var(--smooth-shadow-offset-4) 5.8px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
+    0 var(--smooth-shadow-offset-5) 3.1px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
+    0 var(--smooth-shadow-offset-6) 1.3px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
     0 0 0 var(--smooth-ring-width, 1px) var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-md {
   --smooth-shadow-color: var(--tw-shadow-color, black);
-  --smooth-shadow-ambient-blur: 8px;
-  --smooth-shadow-ambient-alpha: 3%;
+  --smooth-shadow-offset-1: 17.54px;
+  --smooth-shadow-offset-2: 9.4px;
+  --smooth-shadow-offset-3: 5.25px;
+  --smooth-shadow-offset-4: 2.79px;
+  --smooth-shadow-offset-5: 1.16px;
   box-shadow:
-    0 0 var(--smooth-shadow-ambient-blur) 0
-      color-mix(
-        in srgb,
-        var(--smooth-shadow-color) var(--smooth-shadow-ambient-opacity, 0%),
-        transparent
-      ),
-    0 17.54px 23.39px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
-    0 9.4px 12.5px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
-    0 5.25px 7px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
-    0 2.79px 3.72px -2px color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
-    0 1.16px 1.5px 0 color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
+    0 var(--smooth-shadow-offset-1) 23.39px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
+    0 var(--smooth-shadow-offset-2) 12.5px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
+    0 var(--smooth-shadow-offset-3) 7px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
+    0 var(--smooth-shadow-offset-4) 3.72px -2px
+      color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
+    0 var(--smooth-shadow-offset-5) 1.5px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 1%, transparent),
     0 0 0 var(--smooth-ring-width, 1px) var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-lg {
   --smooth-shadow-color: var(--tw-shadow-color, black);
-  --smooth-shadow-ambient-blur: 10px;
-  --smooth-shadow-ambient-alpha: 3%;
+  --smooth-shadow-offset-1: 25px;
+  --smooth-shadow-offset-2: 12px;
+  --smooth-shadow-offset-3: 6px;
+  --smooth-shadow-offset-4: 3px;
+  --smooth-shadow-offset-5: 1.5px;
   box-shadow:
-    0 0 var(--smooth-shadow-ambient-blur) 0
-      color-mix(
-        in srgb,
-        var(--smooth-shadow-color) var(--smooth-shadow-ambient-opacity, 0%),
-        transparent
-      ),
-    0 25px 50px 0 color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent),
-    0 12px 24px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
-    0 6px 12px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
-    0 3px 6px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
-    0 1.5px 3px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
+    0 var(--smooth-shadow-offset-1) 50px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent),
+    0 var(--smooth-shadow-offset-2) 24px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
+    0 var(--smooth-shadow-offset-3) 12px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
+    0 var(--smooth-shadow-offset-4) 6px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
+    0 var(--smooth-shadow-offset-5) 3px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
     0 0 0 var(--smooth-ring-width, 1px) var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-xl {
   --smooth-shadow-color: var(--tw-shadow-color, black);
-  --smooth-shadow-ambient-blur: 12px;
-  --smooth-shadow-ambient-alpha: 4%;
+  --smooth-shadow-offset-1: 40px;
+  --smooth-shadow-offset-2: 20px;
+  --smooth-shadow-offset-3: 10px;
+  --smooth-shadow-offset-4: 5px;
+  --smooth-shadow-offset-5: 2px;
   box-shadow:
-    0 0 var(--smooth-shadow-ambient-blur) 0
-      color-mix(
-        in srgb,
-        var(--smooth-shadow-color) var(--smooth-shadow-ambient-opacity, 0%),
-        transparent
-      ),
-    0 40px 80px 0 color-mix(in srgb, var(--smooth-shadow-color) 6%, transparent),
-    0 20px 40px 0 color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent),
-    0 10px 20px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
-    0 5px 10px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
-    0 2px 4px 0 color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
+    0 var(--smooth-shadow-offset-1) 80px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 6%, transparent),
+    0 var(--smooth-shadow-offset-2) 40px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent),
+    0 var(--smooth-shadow-offset-3) 20px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
+    0 var(--smooth-shadow-offset-4) 10px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
+    0 var(--smooth-shadow-offset-5) 4px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 2%, transparent),
     0 0 0 var(--smooth-ring-width, 1px) var(--smooth-ring-color);
 }
 
 @utility smooth-shadow-ring-2xl {
   --smooth-shadow-color: var(--tw-shadow-color, black);
-  --smooth-shadow-ambient-blur: 16px;
-  --smooth-shadow-ambient-alpha: 4%;
+  --smooth-shadow-offset-1: 60px;
+  --smooth-shadow-offset-2: 30px;
+  --smooth-shadow-offset-3: 15px;
+  --smooth-shadow-offset-4: 7.5px;
+  --smooth-shadow-offset-5: 3px;
   box-shadow:
-    0 0 var(--smooth-shadow-ambient-blur) 0
-      color-mix(
-        in srgb,
-        var(--smooth-shadow-color) var(--smooth-shadow-ambient-opacity, 0%),
-        transparent
-      ),
-    0 60px 120px 0 color-mix(in srgb, var(--smooth-shadow-color) 7%, transparent),
-    0 30px 60px 0 color-mix(in srgb, var(--smooth-shadow-color) 6%, transparent),
-    0 15px 30px 0 color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent),
-    0 7.5px 15px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
-    0 3px 6px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
+    0 var(--smooth-shadow-offset-1) 120px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 7%, transparent),
+    0 var(--smooth-shadow-offset-2) 60px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 6%, transparent),
+    0 var(--smooth-shadow-offset-3) 30px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent),
+    0 var(--smooth-shadow-offset-4) 15px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
+    0 var(--smooth-shadow-offset-5) 6px 0
+      color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
     0 0 0 var(--smooth-ring-width, 1px) var(--smooth-ring-color);
+}
+
+/*
+ * Opt in to a symmetric version of the selected stack. Each original blur and
+ * opacity remains unchanged; only its vertical offset becomes zero.
+ */
+@utility smooth-shadow-ambient {
+  --smooth-shadow-offset-1: 0;
+  --smooth-shadow-offset-2: 0;
+  --smooth-shadow-offset-3: 0;
+  --smooth-shadow-offset-4: 0;
+  --smooth-shadow-offset-5: 0;
+  --smooth-shadow-offset-6: 0;
 }
 
 /*
