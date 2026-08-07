@@ -34,7 +34,7 @@ The plugin supports Tailwind's shadow color utilities:
 
 ### Ambient layer
 
-Add `smooth-shadow-ambient` when a floating surface needs the same shadow on every side. The utility mirrors every original bottom layer across the top, left, and right while preserving its offset, blur, spread, and opacity. It composes with both ringless and ringed shadows. Without this class, the original directional shadow is unchanged.
+Add `smooth-shadow-ambient` when a floating surface needs the same visible shadow on every side. The utility recenters each layer, converts its original downward offset into spread, and slightly increases opacity to preserve the bottom profile without overlapping directional copies. It composes with both ringless and ringed shadows. Without this class, the original directional shadow is unchanged.
 
 ```html
 <div class="smooth-shadow-xl smooth-shadow-ambient" />
